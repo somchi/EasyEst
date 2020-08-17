@@ -1,0 +1,121 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="page-header-area">
+         <div class="container">
+            <div class="row">
+                {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                {% endif %}
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>Create Your Request</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service</a></li>
+                  <li><a class="active" href="">Custom Service Request</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bg ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Middle Content Area -->
+                  <div class="col-md-7 col-sm-12 col-xs-12">
+                     <!--  Form -->
+                     <div class="form-grid">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.certificate_name.errors }}
+                                {{ form.certificate_name.label}}
+                                {{ form.certificate_name}}
+                        </div>
+                         <div class="form-group">
+                             {{ form.cert_evidence.errors }}
+                             {{ form.cert_evidence.label }}
+                             {{ form.cert_evidence }}
+                        </div>
+                         <div class="form-group">
+                             {{ form.issuer.errors }}
+                             {{ form.issuer.label }}
+                             {{ form.issuer }}
+                        </div>
+                         <div class="form-group">
+                             {{ form.date_acquired.errors }}
+                             {{ form.date_acquired.label }}
+                             {{ form.date_acquired }}
+                        </div>
+                           <button class="btn btn-theme btn-lg btn-block">Save</button>
+                        </form>
+                     </div>
+                     <!-- Form -->
+                  </div>
+
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+      <!-- Main Content Area End -->
+      <!-- Forget Password -->
+      <div class="custom-modal">
+         <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header rte">
+                     <h2 class="modal-title">Forgot Your Password ?</h2>
+                  </div>
+                  <form>
+                     <div class="modal-body">
+                        <div class="form-group">
+                           <label>Email</label>
+                           <input placeholder="Enter Your Email Adress" class="form-control" type="email">
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default">Reset My Account</button>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}
+

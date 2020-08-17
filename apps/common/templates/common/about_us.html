@@ -1,0 +1,153 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="page-header-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>About Us</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home Page</a></li>
+                  <li><a href="#">Pages</a></li>
+                  <li><a class="active" href="{% url 'common:about_us' %}">About Us</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding pattern_dots">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                     <div class="about-us-content">
+                        <div class="heading-panel">
+                           <h3 class="main-title text-left">
+                              About EasyEstate
+                           </h3>
+                        </div>
+                        <h2></h2>
+                        <p>EASYESTATE.COM.NG, a product of Judan technologies, is primarily;</p>
+                        <p>An online real estate platform which connects property(lands and housing)owners, agents and brokers to prospective clients willing to buy, lease or rent these properties.</p>
+                         <p>An online platform where house maintenance service providers such as Plumbers, Electricians, Painters,
+                             Surveyors, Architects, Real Estate Valuers, Carpenters, Interior decorators etc gets connected to clients who need their services.</p>
+                         <p>Our goal is to effectively solve the problem of property owners and house maintenance service providers - prospective clients hectic connection involved in the business of real estate, and providing a common marketplace for them using the power of technology</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+                     <div class="about-page-featured-image">
+                        <a href="{% url 'index' %}"><img src="{% static 'images/easy1.jpg' %}" alt=""></a>
+                     </div>
+                  </div>
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <section class="about-us">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-md-12 no-padding">
+                     <!-- service box 3 -->
+                     <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                        <div class="why-us border-box text-center">
+                           <h5>Why choose us</h5>
+                           <p>Mauris eros tortor, tristique cursus porttitor et, luctus sed urna. Quisque id libero risus. Aliquam accumsan erat id sem placerat tempus.</p>
+                        </div>
+                     </div>
+                     <!-- service box end -->
+                     <!-- service box 3 -->
+                     <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                        <div class="why-us border-box text-center">
+                           <h5>Our mission</h5>
+                           <p>To effectively solve the problem of property owners and house maintenance service providers - prospective clients hectic connection involved in the business of real estate, and providing a common marketplace for them using the power of technology</p>
+                        </div>
+                        <!-- end featured-item -->
+                     </div>
+                     <!-- service box end -->
+                     <!-- service box 3 -->
+                     <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                        <div class="why-us border-box text-center">
+                           <h5>Only creative solutions</h5>
+                           <p>Mauris eros tortor, tristique cursus porttitor et, luctus sed urna. Quisque id libero risus. Aliquam accumsan erat id sem placerat tempus.</p>
+                        </div>
+                        <!-- end featured-item -->
+                     </div>
+                     <!-- service box end -->
+                  </div>
+               </div>
+            </div>
+            <!-- end container -->
+         </section>
+         <div class="clearfix"></div>
+         <!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
+         <div class="funfacts custom-padding parallex">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-home-1"></i>
+                     </div>
+                     <div class="number"><span>{{ featured|length }}</span>+</div>
+                     <h4>Fea<span>tured</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-home-2"></i>
+                     </div>
+                     <div class="number"><span>{{ listed|length }}</span>+</div>
+                     <h4>Pro<span>perties</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-people-1"></i>
+                     </div>
+                     <div class="number"><span>{{ active_users|length }}</span>+</div>
+                     <h4>Active <span>Users</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-businessman-paper-of-the-application-for-a-job"></i>
+                     </div>
+                     <div class="number"><span>{{ jobs|length }}</span>+</div>
+                     <h4>Active <span>Jobs</span></h4>
+                  </div>
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container -->
+         </div>
+         <!-- /.funfacts -->
+         <!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Pricing =-=-=-=-=-=-= -->
+
+         <!-- =-=-=-=-=-=-= Pricing End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= App Download Section  =-=-=-=-=-=-= -->
+
+         <!-- =-=-=-=-=-=-= Partners End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+{% endblock %}

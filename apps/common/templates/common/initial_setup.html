@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block menu %}
+{% endblock menu %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+<section class="comming-soon-grid">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 comming-soon">
+                  <div class="theme-logo">
+                     <a href="{% url 'index' %}"><img src="{% static 'images/easy.jpg' %}" alt=""></a>
+                  </div>
+                  <div class="count-down">
+                     <div id="clock"></div>
+                  </div>
+                  <div>
+                      <h3> Welcome {{ user.username }}</h3>
+                      <p>Just one more step for your account to be setup </p>
+                      <p><a href="{% url 'common:create_profile' user.pk %}">SetUp</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service</a></li>
+                  <li><a class="active" href="#">Available Jobs </a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding gray">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Middle Content Area -->
+                  <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
+                     <!-- Sidebar Widgets -->
+                     <div class="user-profile">
+                        <a href="profile.html">
+                           {% if user.profile.photo %}
+                           <img src="{{ user.profile.photo.url }}" alt="" class="user-photo"></a>
+                           {% else %}
+                          <img class="image" alt="img" src="{% static 'images/avatar.jpg' %}">
+                          {% endif %}
+                        <div class="profile-detail">
+                           <h6>{{ user.username }}</h6>
+                           <ul class="contact-details">
+                              <li>
+                                 <i class="fa fa-map-marker"></i> {{ user.profile.address }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-envelope"></i>{{ user.email }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-phone"></i> {{ user.profile.phone_number }}
+                              </li>
+                               <li>
+                                 <i class="fa fa-cc"></i> {{ provider }}
+                              </li>
+                           </ul>
+                        </div>
+                        <ul>
+                           <li ><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                           <li><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service <span class="badge"></span></a></li>
+                           <li  class="active"><a href="{% url 'common:available_jobs' user.profile.pk %}">Available Jobs <span class="badge"></span></a></li>
+                           <li><a href="/account/logout">Logout</a></li>
+                        </ul>
+                     </div>
+                     <!-- Categories -->
+                     <div class="widget">
+                        <div class="widget-heading">
+                           <h4 class="panel-title"><a>Change Your Plan</a></h4>
+                        </div>
+                        <div class="widget-content">
+                           <select class=" form-control">
+                              <option label="Select Option"></option>
+                              <option value="0">Free</option>
+                              <option value="1">Premium</option>
+                              <option value="2">Featured</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-8 col-sm-12 col-xs-12">
+                     <!-- Row -->
+                     <div class="row">
+                        <!-- Sorting Filters -->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                           <!-- Sorting Filters Breadcrumb -->
+                           <!-- Sorting Filters Breadcrumb End -->
+                        </div>
+                        <!-- Sorting Filters End-->
+                        <div class="clearfix"></div>
+                        <!-- Ads Archive -->
+                        <div class="posts-masonry">
+                           <!-- Listing Ad Grid -->
+                           {% for p in requests %}
+                           <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12  ">
+                              <a href="#">
+                              <div class="white category-grid-box-1 ">
+                                 <!-- Image Box -->
+                                 <div class="image"> <img alt="requester photo" src="{{ p.requester.photo.url }}" class="img-responsive" style="height:200px"> </div>
+                                 <!-- Short Description -->
+                                 <div class="short-description-1 " >
+                                    <!-- Category Title -->
+                                    <div class="category-title"> <span>Job Area: {{ p.type_of_service }}</span> </div>
+                                    <div class="category-title"><i class="fa fa-map-marker"></i> {{ p.location }}</div>
+                                    <!-- Ad Title -->
+                                    <h3>
+                                       <a title="" href="single-page-listing.html">{{ p.job_title }}</a>
+                                    </h3>
+                                    <!-- Location -->
+                                    <p class="location">Duration: {{ p.duration}}</p>
+                                    <!-- Rating -->
+                                    <div class="rating">
+                                       <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(2)</span>
+
+                                    </div>
+                                     <!-- Price --><span class="ad-price">Budget: N{{ p.price_from }} to N{{ p.price_to }}</span>
+                                 </div>
+                                 <!-- Ad Meta Stats -->
+                                 <div class="ad-info-1">
+                                    <ul class="pull-left">
+                                       <li> <i class="fa fa-eye"></i><a href="#">445 Views</a> </li>
+                                       <li> <i class="fa fa-clock-o"></i>{{ p.date_created }} </li>
+                                    </ul>
+                                            <ul class="pull-right">
+                                               {% if user.profile == p.requester %}
+                                                <li>You Created this request</li>
+                                                {% else %}
+                                               <li> <a type="button" class="btn btn-warning" href="{% url 'service:request_interest' p.pk %}">Bid Offer</a> </li>
+                                                {% endif %}
+                                            </ul>
+                                 </div>
+                              </div>
+                              </a>
+                           </div>
+                           {% endfor %}
+                           <!-- Listing Ad Grid -->
+                           <!-- Listing Ad Grid -->
+                        </div>
+                        <!-- Ads Archive End -->
+                        <div class="clearfix"></div>
+                        <!-- Pagination -->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                        </div>
+                        <!-- Pagination End -->
+                     </div>
+                     <!-- Row End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+      </div>
+{% endblock %}

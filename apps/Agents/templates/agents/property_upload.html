@@ -1,0 +1,206 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="page-header-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>Property Posting </h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a class="active" >Add Property</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding  gray ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
+                     <!-- end post-padding -->
+                     <div class="post-ad-form postdetails">
+                        <div class="heading-panel">
+                           <h3 class="main-title text-left">
+                              Post Your Property
+                           </h3>
+                        </div>
+                        <p class="lead">Property Posting an on <a href="{% url 'index' %}">EasyEstate</a> is free! However, all upload must follow our rules:</p>
+                        <form  class="submit-form" method="post" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                           <!-- Title  -->
+                           <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                  {{ form.property_type.error}}
+                                  {{ form.property_type.label}}
+                                  {{ form.property_type }}
+                              </div>
+                           </div>
+                           <div class="row">
+                              <!-- Category  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                  {{ form.availability_type.error}}
+                                  {{ form.availability_type.label}}
+                                  {{ form.availability_type }}
+                              </div>
+                              <!-- Price  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                  {{ form.price.error}}
+                                  {{ form.price.label}}
+                                  {{ form.price }}
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <!-- Image Upload  -->
+                           <div class="row">
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 {{ form.main_view.error}}
+                                 <label class="control-label">View 1 <small>Please add images of your ad. (350x450)</small></label>
+                                 {{ form.main_view }}
+                              </div>
+                                <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 {{ form.right_view.error}}
+                                 <label class="control-label">View 2 <small>Please add images of your ad. (350x450)</small></label>
+                                 {{ form.right_view }}
+                              </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 {{ form.back_view.error}}
+                                 <label class="control-label">View 3 <small>Please add images of your ad. (350x450)</small></label>
+                                 {{ form.back_view }}
+                              </div>
+                                <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 {{ form.left_view.error}}
+                                 <label class="control-label">View 4 <small>Please add images of your ad. (350x450)</small></label>
+                                 {{ form.left_view }}
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <!-- Ad Description  -->
+                            <div class="clearfix"></div>
+                           <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
+                                 {{ form.description.error }}
+                                 <label class="control-label">Property Description <small>Enter long description for your project</small></label>
+                                 {{ form.description }}
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 {{ form.number_of_room.errors }}
+                                 <label class="control-label">Number of Rooms</label>
+                                 {{ form.number_of_room }}
+                              </div>
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                {{ form.number_of_toilet.errors }}
+                                 <label class="control-label">Number of Toilet<small>Number of Toilet</small></label>
+                                 {{ form.number_of_toilet }}
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <div class="row">
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 {{ form.number_of_baths.errors }}
+                                 <label class="control-label">Number of Baths<small>Number of Baths</small></label>
+                                 {{ form.number_of_baths }}
+                              </div>
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                 {{ form.water.errors }}
+                                 <label class="control-label">Water Availability</label>
+                                 {{ form.water }}
+                              </div>
+                           </div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
+                                 {{ form.power.error }}
+                                 <label class="control-label">Electricity Availability <small>Enter long description for your project</small></label>
+                                 {{ form.power }}
+                              </div>
+                           </div>
+                           <!-- Select Package  -->
+                           <!-- Featured Ad  -->
+                           <div class="row">
+                              <!-- Category  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                  {{ form.property_state.error}}
+                                  {{ form.property_state.label}}
+                                  {{ form.property_state }}
+                              </div>
+                              <!-- Price  -->
+                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                  {{ form.property_lga.error}}
+                                  {{ form.property_lga.label}}
+                                  {{ form.property_lga }}
+                              </div>
+                           </div>
+                           <!-- end row -->
+                           <button class="btn btn-theme pull-right">Publish Property</button>
+                        </form>
+                     </div>
+                     <!-- end post-ad-form-->
+                  </div>
+                  <!-- end col -->
+                  <!-- Right Sidebar -->
+                  <div class="col-md-4 col-xs-12 col-sm-12">
+                     <!-- Sidebar Widgets -->
+                     <div class="blog-sidebar">
+                        <!-- Categories -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Saftey Tips </a></h4>
+                           </div>
+                           <div class="widget-content">
+                              <p class="lead">Posting a property on <a href="{% url 'index' %}">EasyEstate.com.ng</a> is free! However, all ads must follow our rules:</p>
+                              <ol>
+                                 <li>Make sure you post in the correct category.</li>
+                                 <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                                 <li>Do not upload pictures with watermarks.</li>
+                                 <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                                 <li>Do not put your email or phone numbers in the title or description.</li>
+                                 <li>Make sure you post in the correct category.</li>
+                                 <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                                 <li>Do not upload pictures with watermarks.</li>
+                                 <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                              </ol>
+                           </div>
+                        </div>
+                        <!-- Latest News -->
+                     </div>
+                     <!-- Sidebar Widgets End -->
+                  </div>
+                  <!-- Middle Content Area  End --><!-- end col -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+
+{% endblock %}

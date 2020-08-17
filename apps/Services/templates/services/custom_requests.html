@@ -1,0 +1,395 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service</a></li>
+                  <li><a class="active" href="">Custom Requests & Orders </a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding gray">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                   {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                   {% endif %}
+                  <!-- Middle Content Area -->
+                  <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
+                     <!-- Sidebar Widgets -->
+                     <div class="user-profile connectedSortable">
+                        <a href="profile.html">
+                            {% if user.profile.photo %}
+                            <img src="{{ user.profile.photo.url }}" alt="">
+                            {% elif 'M' in user.profile.gender %}
+                                <img src="{% static 'images/male-avatar.jpg' %}" alt="">
+                            {% else %}
+                                <img src="{% static 'images/female-avatar.png' %}" alt="">
+                            {% endif %}
+                        </a>
+                        <div class="profile-detail">
+                           <h6>{{ user.username }}</h6>
+                           <ul class="contact-details">
+                              <li>
+                                 <i class="fa fa-map-marker"></i> {{ object.address }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-envelope"></i>{{ user.email }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-phone"></i> {{ object.phone_number }}
+                              </li>
+                           </ul>
+                        </div>
+                        <ul>
+                           <li ><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service</a></li>
+                           <li ><a href="{% url 'common:profile' object.pk %}">Profile</a></li>
+                           <li class="active"><a href="#tab1" role="tab" data-toggle="tab">My Custom Requests<span class="badge">{{ requester }}</span></a></li>
+                           <li><a href="#tab2" role="tab" data-toggle="tab">My Custom Request Bids</a></li>
+                            <li><a href="#tab3" role="tab" data-toggle="tab">Sent Offers <span class="badge">{% if user.profile in jobs %}{{ jobs }}{% endif %}</span></a></li>
+                           <li><a href="#tab4" role="tab" data-toggle="tab">Offered Jobs <span class="badge">{% if user.profile in offered %}{{ offered }}{% endif %}</span></a></li>
+                            <li><a href="">My Service</a></li>
+                        </ul>
+                     </div>
+                     <!-- Categories -->
+                  </div>
+                  <div class="col-md-8 col-sm-12 col-xs-12">
+                     <!-- Row -->
+                     <div class="row">
+                        <div class="clearfix"></div>
+                        <!-- Ads Archive -->
+                        <div class="tab-content">
+                            <!--My Custom Request-->
+                            <div class="posts-masonry active tab-pane fade in" id="tab1">
+                               <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
+                                   {% for requestservices in object.requestservices_set.all %}
+                                  <!-- Ads Listing -->
+                                  <div class="ads-list-archive">
+                                     <!-- Image Block -->
+                                     <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                        <!-- Img Block -->
+                                        <div class="ad-archive-img ">
+                                           <a href="#">
+                                           <img src="{{ user.profile.photo.url }}" alt="">
+                                           </a>
+                                        </div>
+                                        <!-- Img Block -->
+                                     </div>
+                                     <!-- Ads Listing -->
+                                     <div class="clearfix visible-xs-block"></div>
+                                     <!-- Content Block -->
+                                     <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                        <!-- Ad Desc -->
+                                        <div class="ad-archive-desc">
+                                           <!-- Price -->
+                                           <div class="ad-price">N{{ requestservices.price_from }} to N{{ requestservices.price_to }}</div>
+                                           <!-- Title -->
+                                           <h3>Service Type: {{ requestservices.type_of_service }} </h3>
+                                           <!-- Category -->
+                                           <div class="category-title"> <span><a href="#">Duration: {{ requestservices.duration }}</a></span> </div>
+                                           <!-- Short Description -->
+                                           <div class="clearfix visible-xs-block"></div>
+                                           <p class="hidden-sm">{{ requestservices.job_title }}</p>
+                                           <!-- Ad Features -->
+                                           <ul class="add_info">
+                                              <!-- Contact Details -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <h4>Call Timings</h4>
+                                                       <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
+                                                       <br>
+                                                       <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                                       <br>
+                                                       <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                              <!-- Address -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <h4>Address</h4>
+                                                      {{ propertyupload.property_lga }} in {{ propertyupload.property_state }}
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                              <!-- Ad Type -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <strong>Condition</strong> <span class="label label-danger">Used</span>
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                              <!-- Ad Type -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <strong>Warrinty</strong> <span class="label label-danger">No </span>
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                           </ul>
+                                           <!-- Ad History -->
+                                           <div class="clearfix archive-history">
+                                              <div class="last-updated">Created: {{ requestservices.date_created }}</div>
+                                              <div class="ad-meta">
+                                                  <form method="post" action="" class="ad-meta">
+                                                  {% csrf_token %}
+                                                 <a class="btn btn-danger"  href="{% url 'service:delete' requestservices.pk %}"><i class="fa fa-times"></i> Delete</a>
+                                              </form>
+                                              <form method="post" action="" class="ad-meta">
+                                                 <a href="{% url 'service:edit_requests' requestservices.pk %}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
+                                              </form>
+                                              <form class="ad-meta">
+                                                  <a class="btn btn-default"><i class="fa fa-plus"></i> Promote</a>
+                                              </form>
+                                              </div>
+                                           </div>
+                                        </div>
+                                        <!-- Ad Desc End -->
+                                     </div>
+                                     <!-- Content Block End -->
+                                  </div>
+                                  <!-- Ads Listing -->
+                                   {% endfor %}
+                               </div>
+                            </div>
+                            <!-- My Custom Request Bids -->
+                            <div class="tab-pane fade" id="tab2">
+                                <!-- TAB NAVIGATION -->
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="sample-table-2">
+                                        <thead>
+                                            <tr>
+                                                <th class="hidden-xs">Provider's Name</th>
+                                                <th>Job Title</th>
+                                                <th>Offer</th>
+                                                <th>Price</th>
+                                                <th>Duration</th>
+                                                <th>Service Type</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for requestservices in object.requestservices_set.all %}
+                                            {% for requestinterest in requestservices.requestinterest_set.all %}
+                                            <tr>
+                                                <td><a href="{% url 'common:provider_detail' requestinterest.interested_person.pk %}">{{ requestinterest.interested_person }}</a></td>
+                                                <td>{{ requestinterest.request.job_title }}</td>
+                                                <td>{{ requestinterest.my_offer }}</td>
+                                                <td>N{{ requestinterest.price_offer }}</td>
+                                                <td>{{ requestinterest.duration }} {% if requestinterest.duration < 2 %} day {% else %} days {% endif %}</td>
+                                                <td>{{ requestinterest.request.type_of_service }}</td>
+                                                <td class="center">
+                                                    <div class="btn-toolbar" role="toolbar">
+                                                        <div class="btn-group">
+                                                            <a type="button" class="btn btn-success" id="grant" href="{% url 'payments:custom_summary' requestinterest.pk %}">Grant</a>
+                                                            <a type="button" class="btn btn-danger" id="cancel">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Sent Offers -->
+                            <div class="tab-pane fade" id="tab3">
+                                <!-- TAB NAVIGATION -->
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="hidden-xs">Offer</th>
+                                                <th>Price</th>
+                                                <th>Duration</th>
+                                                <th>Request</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for requestinterest in profile.providers.requestinterest_set.all %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ requestinterest.my_offer }}</td>
+                                                <td>N{{ requestinterest.price_offer }}</td>
+                                                <td>{{ requestinterest.duration }}{% if requestinterest.duration < 2 %} day {% else %} days {% endif %}</td>
+                                                <td>{{ requestinterest.request.type_of_service }}</td>
+                                                <td>{{ requestinterest.status }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Offered Jobs -->
+                            <div class="tab-pane fade" id="tab4">
+                                <!-- TAB NAVIGATION -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="active"><a href="#tab5" role="tab" data-toggle="tab">Active</a></li>
+                                    <li><a href="#tab6" role="tab" data-toggle="tab">Completed</a></li>
+                                    <li><a href="#tab7" role="tab" data-toggle="tab">Cancelled</a></li>
+                                    <li><a href="#tab8" role="tab" data-toggle="tab">Starred</a></li>
+                                </ul>
+                                <!-- TAB CONTENT -->
+                                <div class="tab-content">
+                                    <div class="active tab-pane fade in" id="tab5">
+                                        <h2>Active</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Buyer</th>
+                                                        <th>Service Category</th>
+                                                        <th>Due Date</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for requestinterest in profile.providers.requestinterest_set.all %}
+                                                    {% if requestinterest.status == 'Granted' %}
+                                                    <tr>
+                                                        <td>{{ forloop.counter }}</td>
+                                                        <td>{{ requestinterest.request.requester.user.username }}</td>
+                                                        <td>{{ requestinterest.request.type_of_service }}</td>
+                                                        <td>{{ requestinterest.due_date }}</td>
+                                                        <td>{{ requestinterest.status }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab6">
+                                        <h2>Completed</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Buyer</th>
+                                                        <th>Service Category</th>
+                                                        <th>Due Date</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for requestinterest in profile.providers.requestinterest_set.all %}
+                                                    {% if requestinterest.status == 'Completed' %}
+                                                    <tr>
+                                                        <td>{{ forloop.counter }}</td>
+                                                        <td>{{ requestinterest.request.requester.user.username }}</td>
+                                                        <td>{{ requestinterest.request.type_of_service }}</td>
+                                                        <td>{{ requestinterest.due_date }}</td>
+                                                        <td>{{ requestinterest.status }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab7">
+                                        <h2>Cancelled</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Buyer</th>
+                                                        <th>Service Category</th>
+                                                        <th>Due Date</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab8">
+                                        <h2>Starred</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Buyer</th>
+                                                        <th>Service Category</th>
+                                                        <th>Due Date</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                     </div>
+                        <!-- Ads Archive End -->
+                      <div class="clearfix"></div>
+                        <!-- Pagination -->
+                        <!-- Pagination End -->
+                     </div>
+                     <!-- Row End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+
+<script>
+    $(function (){
+        $(#grant).on('click', function(){
+        var status = {{ requestinterest.pk }}
+        $.ajax({
+            url: '/service/grant/'
+            data: {status:status}
+        })
+        })
+    })
+</script>
+{% endblock %}
+

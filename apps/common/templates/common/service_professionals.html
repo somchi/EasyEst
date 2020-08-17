@@ -1,0 +1,123 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+<div id="search-section">
+    <div class="container" style="padding-top: 0px">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                  <!-- Form -->
+                <form method="get" class="search-form" action="/service/result/">
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                        <input type="text"  class="form-control" name="state" id="state" placeholder='State' required/>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                        <input type="text"  class="form-control" name="lga" id="lga" placeholder='LGA' required/>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                        <select class="category form-control" name="service_type" required>
+                            <option value="">Service Type</option>
+                            {% for category in ser_typ %}
+                            <option value="{{ forloop.counter0 }}" name="service_type" id="service_type">{{ category.service }}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+                     <!-- Search Button -->
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                        <button type="submit" class="btn btn-block btn-light">Search</button>
+                    </div>
+                </form>
+                  <!-- end .search-form -->
+            </div>
+        </div>
+    </div>
+</div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+<div class="main-content-area clearfix">    <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+   <section class="section-padding gray">
+      <!-- Main Container -->
+      <div class="container">
+         <!-- Row -->
+         <div class="row">
+            <!-- Middle Content Area -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Sorting Filters -->
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                     <!-- Sorting Filters Breadcrumb -->
+                     <!-- Sorting Filters Breadcrumb End -->
+                  </div>
+                  <!-- Sorting Filters End-->
+                  <div class="clearfix"></div>
+                  <!-- Ads Archive -->
+                  <div class="posts-masonry">
+                     <!-- Listing Ad Grid -->
+                     {% for providers in object.providers_set.all %}
+                     <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12  ">
+                        <div class="white category-grid-box-1 ">
+                           <!-- Image Box -->
+                           <div class="image">
+                               {% if providers.provider.photo %}
+                               <img alt="provider photo" src="{{ providers.provider.photo.url }}" class="img-responsive" style="height:170px;width:250px"> </div>
+                            {% elif 'M' in user.profile.gender %}
+                                <img src="{% static 'images/male-avatar.jpg' %}" alt="">
+                            {% else %}
+                                <img src="{% static 'images/female-avatar.png' %}" alt="" style="">
+                            {% endif %}
+                            <!-- Short Description -->
+                           <div class="short-description-1 ">
+                              <!-- Category Title -->
+                              <div class="category-title"> <span> {{ providers.service_provided }}</span> </div>
+                              <!-- Ad Title -->
+                              <h3>
+                                 <a title="" >{{ providers.full_name }}</a>
+                              </h3>
+                              <!-- Location -->
+                              <p class="location"><i class="fa fa-map-marker"></i> {{ providers.provider.state }} | {{ providers.provider.address }}</p>
+                              <!-- Rating -->
+                              <div class="rating">
+                                 <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(2)</span>
+                              </div>
+                              &nbsp;&nbsp;&nbsp; <i class="fa fa-database"></i> <span class="badge">110</span>
+                               <div class="user-preview">
+                                   <a href="{% url 'common:provider_detail' providers.pk %}" class="view-details" style="background-color:#7dba21;">View Details</a>
+                               </div>
+
+                           </div>
+                           <!-- Ad Meta Stats -->
+                        </div>
+                     </div>
+                     {% empty %}
+                     <p>No {{ object.service }} service providers yet</p>
+                     {% endfor %}
+                     <!-- Listing Ad Grid -->
+                  </div>
+                  <!-- Ads Archive End -->
+                  <div class="clearfix"></div>
+                  <!-- Pagination -->
+                  <div class="col-md-12 col-xs-12 col-sm-12">
+                  </div>
+                  <!-- Pagination End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Middle Content Area  End -->
+         </div>
+         <!-- Row End -->
+      </div>
+      <!-- Main Container End -->
+   </section>
+   <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+   <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+   <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+</div>
+{% endblock content %}
+
+

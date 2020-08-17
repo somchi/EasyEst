@@ -1,0 +1,122 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="page-header-area">
+         <div class="container">
+            <div class="row">
+                {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                {% endif %}
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>Create Your Account</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service</a></li>
+                  <li><a class="active" href="#">Create Service Profile </a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bg ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Middle Content Area -->
+                   <H2>Do you render any house related service, you can leverage EasyEstate to reach a large audience, tell them what you do and boast your income? </H2>
+                   <H3>Then <em>Sign Up</em> and start exploring </H3>
+                   <div class="form-grid">
+                  <form method="post" action="">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                             {{ form.full_name.errors }}
+                             {{ form.full_name.label }}
+                            {{ form.full_name }}
+                        </div>
+                        <div class="form-group">
+                             {{ form.service_provided.errors }}
+                             {{ form.service_provided.label }}
+                            {{ form.service_provided }}
+                        </div>
+                        <div class="form-group">
+                             {{ form.major_jobs_done1.errors }}
+                             {{ form.major_jobs_done.label }}
+                            {{ form.major_jobs_done }}
+                        </div>
+                  </div>
+                  <div class="col-md-6">
+                     <!--  Form -->
+                            {% csrf_token %}
+                      <div class="form-group">
+                             {{ form.since.errors }}
+                             {{ form.since.label }}
+                            {{ form.since }}
+                        </div>
+                        <div class="form-group">
+                             {{ form.to.errors }}
+                             {{ form.to.label }}
+                            {{ form.to }}
+                        </div>
+                        <div class="form-group">
+                             {{ form.major_experience.errors }}
+                             {{ form.major_experience.label }}
+                            {{ form.major_experience }}
+                        </div>
+                        <div class="form-group">
+                             {{ form.service_pic.errors }}
+                             {{ form.service_pic.label }}
+                            {{ form.service_pic }}
+                        </div>
+                      <div class="form-group">
+                             {{ form.starting_at.errors }}
+                             {{ form.starting_at.label }}
+                            {{ form.starting_at }}
+                        </div>
+
+                     <!-- Form -->
+                  </div>
+                  <button class="btn btn-theme btn-lg btn-block">Create</button>
+                  </form>
+                   </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+      <!-- Main Content Area End -->
+      <!-- Forget Password -->
+
+{% endblock %}

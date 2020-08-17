@@ -1,0 +1,204 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' object.pk %}">Profile</a></li>
+                  <li><a class="active" href="{% url 'service:manage_service' object.pk %}">Manage Service</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding gray">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                   {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                   {% endif %}
+                  <!-- Middle Content Area -->
+                  <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
+                     <!-- Sidebar Widgets -->
+                     <div class="user-profile">
+                        <a href="{% url 'common:profile' object.pk %}" style="height:50px;">
+                            {% if user.profile.photo %}
+                            <img src="{{ user.profile.photo.url }}" alt="">
+                            {% elif 'M' in user.profile.gender %}
+                                <img src="{% static 'images/male-avatar.jpg' %}" alt="">
+                            {% else %}
+                                <img src="{% static 'images/female-avatar.png' %}" alt="" style="">
+                            {% endif %}
+                        </a>
+                        <div class="profile-detail">
+                           <h6>{{ user.username }}</h6>
+                           <ul class="contact-details">
+                              <li>
+                                 <i class="fa fa-map-marker"></i> {{ object.address }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-envelope"></i>{{ user.email }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-phone"></i> {{ object.phone_number }}
+                              </li>
+                               <li>
+                                 <i class="fa fa-cc"></i> {{ provider }}
+                              </li>
+                           </ul>
+                        </div>
+                        <ul>
+                           <li class="active"><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service </a></li>
+                           <li><a href="{% url 'common:profile' object.pk %}">Profile {% for provider in object.provider_set.all %} {{ provider.service_provided }}{% endfor %} </a></li>
+                           <li><a href="{% url 'service:create_profile' object.pk %}">Create Service Profile </a></li>
+                           {% if object.providers %}<li><a href="{% url 'service:build_profile' object.pk %}">Build Profile </a></li>{% endif %}
+                           {% if object.providers %}<li><a href="#">Promote Profile </a></li>{% endif %}
+                            <li><a href="#">Find a Service </a></li>
+                           <li><a href="{% url 'service:request_service' object.pk %}">Custom Service Request</a></li>
+                           <li><a href="{% url 'service:my_requests' object.pk %}">Custom Requests & Orders <span class="badge">{{ requester }}</span> </a></li>
+                           {% if object.providers %}<li><a href="{% url 'common:available_jobs' object.pk %}">Available Jobs <span class="badge">{{ jobs }}</span></a></li>{% endif %}
+                           <li><a href="">Transaction History </a></li>
+                           <li ><a href="{% url 'message:messages' object.pk %}">Messages <span class="badge"></span></a></li>
+                           <li><a href="/account/logout">Logout</a></li>
+                        </ul>
+                     </div>
+                     <!-- Categories -->
+                     <div class="widget">
+                        <div class="widget-heading">
+                           <h4 class="panel-title"><a>Change Your Plan</a></h4>
+                        </div>
+                        <div class="widget-content">
+                           <select class=" form-control">
+                              <option label="Select Option"></option>
+                              <option value="0">Free</option>
+                              <option value="1">Premium</option>
+                              <option value="2">Featured</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-8 col-sm-12 col-xs-12">
+                     <!-- Row -->
+                     <div class="row">
+                        <!-- Sorting Filters -->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                           <!-- Sorting Filters Breadcrumb -->
+                           <!-- Sorting Filters Breadcrumb End -->
+                        </div>
+                        <!-- Sorting Filters End-->
+                        <div class="clearfix"></div>
+                        <!-- Ads Archive -->
+                        <div class="posts-masonry">
+                           <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
+                              <!-- Ads Listing -->
+                               <div class="carousel-row">
+                                 <div class="slide-row">
+                                    <div class="carousel slide slide-carousel" id="carousel-1" data-ride="carousel">
+                                       <!-- Indicators -->
+                                       <ol class="carousel-indicators">
+                                          <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                                          <li data-target="#carousel-1" data-slide-to="1"></li>
+                                          <li data-target="#carousel-1" data-slide-to="2"></li>
+                                       </ol>
+
+                                       <!-- Wrapper for slides -->
+                                       <div class="carousel-inner">
+                                          <div class="item active">
+                                             <img src="{% static 'images/slider1.jpg' %}" alt="Image" style="width:100%;">
+                                          </div>
+                                          <div class="item">
+                                             <img src="{% static 'images/slider2.jpg' %}" alt="Image" style="width:100%;">
+                                          </div>
+                                          <div class="item">
+                                             <img src="{% static 'images/slider3.jpg' %}" alt="Image" style="width:100%;">
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="slide-content" style="padding-left:10px; padding-top:10px;">
+                                       <h3>Information Page</h3>
+                                       <p>
+                                          You will get all the necessary information from EasyEstate, as they come up here.
+                                       </p>
+                                    </div>
+                                    <div class="slide-footer">
+                                          <span class="pull-right buttons">
+                                              <button class="btn btn-sm btn-primary"><i class="fa fa-info"></i> Know more</button>
+                                          </span>
+                                    </div>
+                                 </div>
+                              </div>
+                               <div class="row">
+                                    <div class="clearfix"></div>
+                                    <div class="tab-content">
+                                        <div class="posts-masonry active tab-pane fade in" id="tab1">
+                                            <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
+                                              <div class="ads-list-archive" style="padding-left:10%; padding-top:10px;">
+                                                  <h3 style="position:relative; left:20%">How Service work on EasyEstate</h3>
+                                                  <p style="position:relative; left:20%">On <em>EasyEstate</em> you can either <em><b>Buy</b></em> or <em><b>Sell</b></em> house related services</p>
+                                                  <h4><b>How To Sell Service(s) </b></h4>
+                                                  <ul>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> After you have signup on EasyEstate</li>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> You will have create a service profile by click <em><b><a href="{% url 'service:create_profile' object.pk %}">Create Service Profile</a></b></em></li>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> After creating your profile, specifying the kind of service your provide, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prospective client will then be able to find you when your service is sort on EasyEstate</li>
+                                                  </ul>
+                                                  <br>
+                                                  <p> That easy right!</p>
+                                                  <p><em><b>Note</b></em>: Be sure to provide the right information that will give to a competitive advantage.</p>
+                                                  <h4><b>How to buy Service </b></h4>
+                                                  <ul>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> Search for the Service you seek for </li>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> Contact the Provider (seller) either by email or buy phone call</li>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> Communicate with the seller</li>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> Pay after the job has been done</li>
+                                                  </ul>
+                                                  <p> That easy right!</p>
+                                                  <p><em><b>Note</b></em>: Ensure to meet in a place that is deemed safe if need be, for the safety of both parties.</p>
+                                                  <h4><b>How to find service providers (sellers) </b></h4>
+                                                  <ul>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> You can create a custom request i.e a detail of what you are in need of, and allow sellers contact you based on your request and you decide who to pick, by click on <b><a href="{% url 'service:request_service' object.pk %}">Custom Service Request</a></b></li>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> You can also find sellers by clicking on <em><b><a href="#">Find a service</a></b></em> from Manage Service Page</li>
+                                                      <li>&nbsp;&nbsp;&nbsp;&nbsp;<b>&#42</b> You can as well find seller from the service categories on the <em><b><a href="{% url 'index' %}">Home Page</a></b></em></li>
+                                                  </ul>
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               <div class="clearfix"></div>
+                           </div>
+                        </div>
+                        <!-- Ads Archive End -->
+                        <div class="clearfix"></div>
+
+                        <!-- Pagination -->
+                        <!-- Pagination End -->
+                     </div>
+                     <!-- Row End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            </div>
+            <!-- Main Container End -->
+         </section>
+      </div>
+{% endblock %}

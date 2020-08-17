@@ -1,0 +1,644 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+<div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bgs gray ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                    {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                   {% endif %}
+                  <!-- Middle Content Area -->
+                  <div class="col-md-8 col-xs-12 col-sm-12">
+                     <!-- Single Ad -->
+                     <div class="single-ad">
+                        <!-- Title -->
+                        <div class="ad-box">
+                           <h1>{{ object.number_of_room }} Bedroom {{ object.property_type}} {{ object.property_lga }} {{ object.property_state }}</h1>
+                           <div class="short-history">
+                              <ul>
+                                 <li>Published on: <b>{{ object.date_created|date:'D d M Y'}}</b></li>
+                                 <li>Availability: <b><a href="#">{{ object.availability_type }}</a></b></li>
+                                 <li>Location: <b>{{ object.property_state }}</b></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Listing Slider  -->
+                        <div class="flexslider single-page-slider">
+                           <div class="flex-viewport">
+                              <ul class="slides slide-main">
+                                 {% if object.main_view %}
+                                 <li class=""><img alt="" src="{{ object.main_view.url }}" title=""></li>
+                                 {% else %}
+                                 <li class=""><img alt="" src="{% static 'images/single-page/1.jpg' %}" title="Another view"></li>
+                                 {% endif %}
+                                 {% if object.back_view %}
+                                 <li><img alt="" src="{{ object.back_view.url }}" title=""></li>
+                                 {% else %}
+                                 <li><img alt="" src="{% static 'images/single-page/2.jpg' %}" title="Another view"></li>
+                                 {% endif %}
+                                 {% if object.left_view %}
+                                 <li class="flex-active-slide"><img alt="" src="{{ object.left_view.url }}" title=""></li>
+                                 {% else %}
+                                 <li class="flex-active-slide"><img alt="" src="{% static 'images/single-page/3.jpg' %}" title="Another view"></li>
+                                 {% endif %}
+                                 {% if object.right_view %}
+                                 <li><img alt="" src="{{ object.right_view.url }}" title=""></li>
+                                 {% else %}
+                                 <li><img alt="" src="{% static 'images/single-page/4.jpg' %}" title="Another view"></li>
+                                 {% endif %}
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Listing Slider Thumb -->
+                        <div class="flexslider" id="carousels">
+                           <div class="flex-viewport">
+                              <ul class="slides slide-thumbnail">
+                                  {% if object.main_view %}
+                                 <li class=""><img alt="" draggable="false"  src="{{ object.main_view.url }}" title=""></li>
+                                 {% else %}
+                                 <li><img alt="" draggable="false" src="{% static 'images/single-page/1_thumb.jpg' %}"></li>
+                                 {% endif %}
+                                  {% if object.back_view %}
+                                 <li><img alt="" draggable="false" src="{{ object.back_view.url }}" title=""></li>
+                                 {% else %}
+                                 <li><img alt="" draggable="false" src="{% static 'images/single-page/2_thumb.jpg' %}"></li>
+                                 {% endif %}
+                                  {% if object.left_view %}
+                                 <li class="flex-active-slide"><img alt=""  draggable="false" src="{{ object.left_view.url }}" title=""></li>
+                                 {% else %}
+                                 <li class="flex-active-slide"><img alt="" draggable="false" src="{% static 'images/single-page/3_thumb.jpg' %}"> </li>
+                                 {% endif %}
+                                  {% if object.right_view %}
+                                 <li><img alt="" draggable="false" src="{{ object.right_view.url }}" title=""></li>
+                                 {% else %}
+                                  <li><img alt="" draggable="false" src="{% static 'images/single-page/4_thumb.jpg' %}"></li>
+                                  {% endif %}
+                                 <!-- items mirrored twice, total of 12 -->
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Share Ad  -->
+                        <div class="ad-share text-center">
+                           <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">
+                              <i class="fa fa-share-alt"></i> <span class="hidetext">Share</span>
+                           </div>
+                           <a class="ad-box col-md-4 col-sm-4 col-xs-12" href="#"><i class="fa fa-star active"></i> <span class="hidetext">Add to watchlist</span></a>
+                           <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">
+                              <i class="fa fa-warning"></i> <span class="hidetext">Report</span>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- Short Description  -->
+                        <div class="ad-box">
+                           <div class="short-features">
+                              <!-- Heading Area -->
+                              <div class="heading-panel">
+                                 <h3 class="main-title text-left">
+                                    Specification
+                                 </h3>
+                              </div>
+                           </div>
+                           <!-- Short Features  -->
+
+                           <div class="desc-points">
+                              <ul>
+                                 <li>
+                                     <span>Number of Rooms :</span> {% if object.number_of_room %}{{ object.number_of_room }} Bedroom {% else %} 0 {% endif %}
+                                 </li>
+                                 <li>
+                                   <span>Number of Toilet :</span> {% if object.number_of_toilet %}{{ object.number_of_toilet }} {% else %} 0 {% endif %}
+                                 </li>
+                                 <li>
+                                    <span>Number of Bath :</span> {% if object.number_of_baths %}{{ object.number_of_baths}} {% else %} 0 {% endif %}
+                                 </li>
+                                 <li>
+                                    <span>Water Availability:</span> {% if object.water %} {{ object.water }} {% else %} None {% endif %}
+                                 </li>
+                                 <li>
+                                    <span>Light Availability :</span> {% if object.power %}{{object.power }} {% else %} None {% endif %}
+                                 </li>
+                                  <li>
+                                    <span>Category :</span> {% if object.property_type %} {{ object.property_type }} {% else %} None {% endif %}
+                                 </li>
+                                  <li>
+                                    <span>Availability Type :</span> {% if object.availability_type %} {{ object.availability_type }} {% else %} None {% endif %}
+                                 </li>
+                                 <li>
+                                    <span>Price :</span> {% if object.price %} ₦{{ object.price }} {% else %} ₦0 {% endif %}
+                                 </li>
+                              </ul>
+                           </div>
+
+                           <!-- Ad Specifications -->
+                           <div class="specification">
+                              <!-- Heading Area -->
+                              <div class="heading-panel">
+                                 <h3 class="main-title text-left">
+                                    Description
+                                 </h3>
+                              </div>
+                              <p>
+                                 {{ object.description }}
+                              </p>
+                           </div>
+                           <div class="clearfix"></div>
+                        </div>
+                     </div>
+                     <!-- Single Ad End -->
+                     <!-- Price Alert -->
+                     <!-- Price Alert End -->
+                     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+                     <div class="grid-panel margin-top-30">
+                        <div class="heading-panel">
+                           <div class="col-xs-12 col-md-12 col-sm-12">
+                              <h3 class="main-title text-left">
+                                 Related Ads
+                              </h3>
+                           </div>
+                        </div>
+                        <!-- Ads Archive -->
+                        <div class="posts-masonry">
+                           <div class="col-md-12 col-xs-12 col-sm-12">
+                              <!-- Ads Listing -->
+                               {% for p in property|slice:":10" %}
+                           <div class="well ad-listing clearfix">
+                              <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
+                                 <!-- Image Box -->
+                                 <div class="img-box">
+                                    <img src="{{ p.main_view.url }}" class="img-responsive" alt="property image">
+                                    <div class="total-images"><strong>8</strong> photos </div>
+                                    <div class="quick-view"> <a href="#ad-preview" data-toggle="modal" class="view-button"><i class="fa fa-search"></i></a> </div>
+                                 </div>
+                                 <!-- Ad Status --><span class="ad-status"> Featured </span>
+                                 <!-- User Preview -->
+                                 <div class="user-preview">
+                                    <a href="#">
+                                        {% if p.created_by.photo %}
+                                          <img src="{{ p.created_by.photo.url }}" class="avatar avatar-small" alt="user image">
+                                            {% elif 'M' in p.created_by.gender %}
+                                        <img src="{% static 'images/male-avatar.jpg' %}" class="avatar avatar-small" alt="user image">
+                                            {% else %}
+                                                <img src="{% static 'images/female-avatar.png' %}" class="avatar avatar-small" alt="user image">
+                                            {% endif %}
+
+                                 </div>
+                              </div>
+                              <div class="col-md-9 col-sm-7 col-xs-12">
+                                 <!-- Ad Content-->
+                                 <div class="row">
+                                    <div class="content-area">
+                                       <div class="col-md-9 col-sm-12 col-xs-12">
+                                          <!-- Category Title -->
+                                          <div class="category-title"> <span><a href="#">{{ p.property_type }}</a></span> </div>
+                                          <!-- Ad Title -->
+                                          <h3><a>{{ p.number_of_room }} Bedroom {{ p.property_type }} for {{ p.availability_type }}</a></h3>
+                                          <!-- Info Icons -->
+                                          <ul class="additional-info pull-right">
+                                             <li>
+                                                <a data-toggle="tooltip" title="Send Message" href="#" class="fa fa-envelope"></a>
+                                             </li>
+                                             <li>
+                                                <a data-toggle="tooltip" title="+92-4567-123" href="#" class="fa fa-phone"></a>
+                                             </li>
+                                             <li>
+                                                <a data-toggle="tooltip" title="Bookmark" href="#" class="fa fa-heart"></a>
+                                             </li>
+                                          </ul>
+                                          <!-- Ad Meta Info -->
+                                          <ul class="ad-meta-info">
+                                             <li> <i class="fa fa-map-marker"></i><a href="#">{{ p.property_lga }} {{ p.property_state }}</a> </li>
+                                             <li> <i class="fa fa-clock-o"></i>{{ p.date_created }} </li>
+                                          </ul>
+                                          <!-- Ad Description-->
+                                          <div class="ad-details">
+                                             <p>{{ p.description }}</p>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-3 col-xs-12 col-sm-12">
+                                          <!-- Ad Stats -->
+                                          <div class="short-info">
+                                             <div class="ad-stats hidden-xs"><span>Available for  : </span>{{ p.availability_type }}</div>
+                                             <div class="ad-stats hidden-xs"><span>Status : </span>{{ p.running }}</div>
+                                             <div class="ad-stats hidden-xs"><span>Category : </span>{{ p.property_type }}</div>
+                                          </div>
+                                          <!-- Price -->
+                                          <div class="price"> <span>₦{{ p.price }}</span> </div>
+                                          <!-- Ad View Button -->
+                                          <a type="button" href="{% url 'agents:property_detail' p.pk %}" class="btn btn-block btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View Ad.</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!-- Ad Content End -->
+                              </div>
+
+                           </div>
+                                {% empty %}
+                         <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title --><!-- Short Description -->
+                        <p class="heading-text">No Featured Properties Yet</p>
+                        </div>
+                        {% endfor %}
+                              {% if r %}
+                              <div class="ads-list-archive">
+                                 <!-- Image Block -->
+                                 <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                    <!-- Img Block -->
+                                    <div class="ad-archive-img">
+                                       <a href="#">
+                                          <div class="ribbon popular"></div>
+                                          <img class="img-responsive" src="images/posting/10.jpg" alt="">
+                                       </a>
+                                    </div>
+                                    <!-- Img Block -->
+                                 </div>
+                                 <!-- Ads Listing -->
+                                 <div class="clearfix visible-xs-block"></div>
+                                 <!-- Content Block -->
+                                 <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                    <!-- Ad Desc -->
+                                    <div class="ad-archive-desc">
+                                       <!-- Price -->
+                                       <div class="ad-price">$38,000</div>
+                                       <!-- Title -->
+                                       <h3>2013 BMW M3 GTR </h3>
+                                       <!-- Category -->
+                                       <div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+                                       <!-- Short Description -->
+                                       <div class="clearfix visible-xs-block"></div>
+                                       <p class="hidden-sm">Lorem ipsum dolor sit amet, quem convenire interesset ut vix, maiestatis inciderint no, eos in elit dicat.....</p>
+                                       <!-- Ad Features -->
+                                       <ul class="add_info">
+                                          <!-- Contact Details -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Call Timings</h4>
+                                                   <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
+                                                   <br> <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                                   <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Address -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Address</h4>
+                                                   Musee du Louvre, 75058 Paris - France
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                                <div class="tooltip-content"> <strong>Condition</strong> <span class="label label-danger">Used</span> </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
+                                                <div class="tooltip-content"> <strong>Warrinty</strong> <span class="label label-danger">No </span> </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                       <!-- Ad History -->
+                                       <div class="clearfix archive-history">
+                                          <div class="last-updated">Last Updated: 1 day ago</div>
+                                          <div class="ad-meta"> <a class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                       </div>
+                                    </div>
+                                    <!-- Ad Desc End -->
+                                 </div>
+                                 <!-- Content Block End -->
+                              </div>
+                              {% endif %}
+                              <!-- Ads Listing -->
+                           </div>
+                        </div>
+                     </div>
+                     <!-- =-=-=-=-=-=-= Latest Ads End =-=-=-=-=-=-= -->
+                  </div>
+                  <!-- Right Sidebar -->
+                  <div class="col-md-4 col-xs-12 col-sm-12">
+                     <!-- Sidebar Widgets -->
+                     <div class="sidebar">
+                        <!-- Contact info -->
+                        <div class="contact white-bg">
+                           <!-- Email Button trigger modal -->
+                            <button class="btn-block btn-contact contactEmail" data-toggle="modal" data-target="#modal" >Contact Seller Via Email</button>
+                           <!-- Email Modal -->
+                           <button class="btn-block btn-contact contactPhone number" data-toggle="modal" data-target="#modal1">View Contact {{ object.created_by.phone_number|slice:":3"}}<span>XXXXXXX</span></button>
+                        </div>
+                            <div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true" id="modal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                          <h3 class="modal-title" id="lineModalLabel">Email Property Seller</h3>
+                                       </div>
+                                        <div class="modal-body">
+                                            <div class="recent-ads">
+                                                <div class="recent-ads-list">
+                                                    <div class="recent-ads-container">
+                                                       <div class="recent-ads-list-image">
+                                                          <a href="#" class="recent-ads-list-image-inner">
+                                                          <img src="{{ object.main_view.url }}" alt="main view ">
+                                                          </a><!-- /.recent-ads-list-image-inner -->
+                                                       </div>
+                                                       <!-- /.recent-ads-list-image -->
+                                                       <div class="recent-ads-list-content">
+                                                          <h3 class="recent-ads-list-title">
+                                                             <a href="#">{{ object.number_of_room }} Room {{ object.property_type }}</a>
+                                                          </h3>
+                                                          <ul class="recent-ads-list-location">
+                                                             <li><a href="#">{{ object.property_lga }} {{ object.property_state }}</a>,</li>
+                                                          </ul>
+                                                          <div class="recent-ads-list-price">
+                                                             ₦{{ object.price }}
+                                                          </div>
+                                                          <!-- /.recent-ads-list-price -->
+                                                       </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <form id="emai-form" method='post' class="form" role="form" action="/message/{{ object.pk }}/email-seller/">
+                                                <div class="modal-body">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            <label>Full Name:</label>
+                                                            <input type="text" class="form-control" placeholder="Full Name" id="full_name" name="full_name">
+                                                        </div>
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            {{ form.sender.errors }}
+                                                            <label>Your email address:</label>
+                                                            <input type="email" class="form-control" placeholder="Email Address" id="email_address" name="email_address">
+                                                        </div>
+                                                         <div class="form-group  col-md-6  col-sm-6">
+                                                            {{ form.subject.errors }}
+                                                            <label>Email subject:</label>
+                                                            <input type="text" class="form-control" placeholder="Email Subject" id="email_subject" name="email_subject">
+                                                        </div>
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            {{ form.sender.errors }}
+                                                            <label>Phone Number</label>
+                                                            <input type="tel" class="form-control" placeholder="Phone Number" id="phone" name="phone" re>
+                                                        </div>
+                                                        <div class="form-group  col-md-12  col-sm-12">
+                                                            {{ form.message.errors }}
+                                                            <label>Your message:</label>
+                                                            <input type="text" class="form-control" placeholder="Your Message" id="message" name="message" required>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                     <div class="clearfix"></div>
+                                                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
+                                                        <button type="submit" class="btn btn-theme btn-block">Submit</button>
+                                                     </div>
+                                              </div>
+                                            </form>
+                                        </div><!-- /.modal-content -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true" id="modal1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                          <h3 class="modal-title" id="lineModalLabel">Get Seller's contact</h3>
+                                       </div>
+                                        <div class="modal-body">
+                                            <div class="recent-ads">
+                                                <div class="recent-ads-list">
+                                                    <div class="recent-ads-container">
+                                                       <div class="recent-ads-list-image">
+                                                          <a href="#" class="recent-ads-list-image-inner">
+                                                          <img src="{{ object.main_view.url }}" alt="main view ">
+                                                          </a><!-- /.recent-ads-list-image-inner -->
+                                                       </div>
+                                                       <!-- /.recent-ads-list-image -->
+                                                       <div class="recent-ads-list-content">
+                                                          <h3 class="recent-ads-list-title">
+                                                             <a href="#">{{ object.number_of_room }} Room {{ object.property_type }}</a>
+                                                          </h3>
+                                                          <ul class="recent-ads-list-location">
+                                                             <li><a href="#">{{ object.property_lga }} {{ object.property_state }}</a>,</li>
+                                                          </ul>
+                                                          <div class="recent-ads-list-price">
+                                                             ₦{{ object.price }}
+                                                          </div>
+                                                          <!-- /.recent-ads-list-price -->
+                                                       </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <form id="email-form" method='post' class="form" role="form" action="/message/{{ object.pk }}/email-seller/">
+                                                <div class="modal-body">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            <label>Full Name:</label>
+                                                            <input type="text" class="form-control" placeholder="Full Name" id="full_name" name="full_name">
+                                                        </div>
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            {{ form.sender.errors }}
+                                                            <label>Your email address:</label>
+                                                            <input type="email" class="form-control" placeholder="Email Address" id="email_address" name="email_address">
+                                                        </div>
+                                                         <div class="form-group  col-md-6  col-sm-6">
+                                                            {{ form.subject.errors }}
+                                                            <label>Email subject:</label>
+                                                            <input type="text" class="form-control" placeholder="Email Subject" id="email_subject" name="email_subject">
+                                                        </div>
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            {{ form.sender.errors }}
+                                                            <label>Phone Number</label>
+                                                            <input type="tel" class="form-control" placeholder="Phone Number" id="phone" name="phone" re>
+                                                        </div>
+                                                        <div class="form-group  col-md-12  col-sm-12">
+                                                            {{ form.message.errors }}
+                                                            <label>Your message:</label>
+                                                            <input type="text" class="form-control" placeholder="Your Message" id="message" name="message" required>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                     <div class="clearfix"></div>
+                                                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
+                                                        <button type="submit" class="btn btn-theme btn-block">Get Seller's Contact</button>
+                                                     </div>
+                                              </div>
+                                            </form>
+                                        </div><!-- /.modal-content -->
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Price info block -->
+                        <div class="ad-listing-price">
+                           <p>₦{{ object.price }}</p>
+                        </div>
+                        <!-- User Info -->
+                        <div class="white-bg user-contact-info">
+                           <div class="user-info-card">
+                              <div class="user-photo col-md-4 col-sm-3  col-xs-4">
+                                 {% if object.created_by.photo %}
+                                 <img src="{{ object.created_by.photo.url }}" alt="user img">
+                                 {% else %}
+                                 <img src="{% static 'images/avatar.jpg' %}" alt="user img">
+                                 {% endif %}
+                              </div>
+                              <div class="user-information no-padding col-md-8 col-sm-9 col-xs-8">
+                                 <span class="user-name"><a class="hover-color" href="profile.html">{{ object.created_by.full_name|capfirst }}</a></span>
+                                 <div class="item-date">
+                                    <span class="ad-pub">Published: {{ object.date_created }}</span><br>
+                                 </div>
+                              </div>
+                              <div class="clearfix"></div>
+                           </div>
+                           <div class="ad-listing-meta">
+                              <ul>
+                                 <li>Ad Id: <span class="color">A{{ forloop.counter }}</span></li>
+                                 <li>Category: <span class="color">{{ object.property_type }}</span></li>
+                                 <li>Ad Status: <span class="color">{{  object.running }}</span></li>
+                                 <li>Location: <span class="color">{{ object.property_lga}} {{ object.property_state }}</span></li>
+                              </ul>
+                           </div>
+                           <div id="itemMap" style="width: 100%; height: 370px; margin-bottom:5px;"></div>
+                        </div>
+                        <!-- Featured Ads -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Featured Ads</a></h4>
+                           </div>
+
+                           <div class="widget-content">
+                              <div class="featured-slider-3">
+                                 <!-- Featured Ads -->
+                                 {% if r %}
+                                 <div class="item">
+                                    <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                       <!-- Ad Box -->
+                                       <div class="category-grid-box">
+                                          <!-- Ad Img -->
+                                          <div class="category-grid-img">
+                                             <img class="img-responsive" alt="" src="images/posting/car-3.jpg">
+                                             <!-- Ad Status -->
+                                             <!-- User Review -->
+                                             <div class="user-preview">
+                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                             </div>
+                                             <!-- View Details --><a href="" class="view-details">View Details</a>
+                                          </div>
+                                          <!-- Ad Img End -->
+                                          <div class="short-description">
+                                             <!-- Ad Category -->
+                                             <div class="category-title"> <span><a href="#">Cars</a></span> </div>
+                                             <!-- Ad Title -->
+                                             <h3><a title="" href="single-page-listing.html">2017 Honda Civic EX</a></h3>
+                                             <!-- Price -->
+                                             <div class="price">$18,200 <span class="negotiable">(Negotiable)</span></div>
+                                          </div>
+                                          <!-- Addition Info -->
+                                          <div class="ad-info">
+                                             <ul>
+                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                             </ul>
+                                          </div>
+                                       </div>
+                                       <!-- Ad Box End -->
+                                    </div>
+                                 </div>
+                                 {% endif %}
+                                 <!-- Featured Ads -->
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Recent Ads -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Recent Ads</a></h4>
+                           </div>
+                           <div class="widget-content recent-ads">
+                              <!-- Ads -->
+                              {% if r %}
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-1.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Sony Xperia Z1</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 17,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              {% endif %}
+                           </div>
+                        </div>
+                        <!-- Saftey Tips  -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Safety tips for deal</a></h4>
+                           </div>
+                           <div class="widget-content saftey">
+                              <ol>
+                                 <li>Use a safe location to meet seller</li>
+                                 <li>Avoid cash transactions</li>
+                                 <li>Beware of unrealistic offers</li>
+                              </ol>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Sidebar Widgets End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               </div>
+               <!-- Row End -->
+
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+</div>
+{% endblock %}

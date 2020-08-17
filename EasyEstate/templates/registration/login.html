@@ -1,0 +1,129 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="page-header-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>User Sign In</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bg ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Middle Content Area -->
+                  <div class="col-md-5 col-md-push-7 col-sm-6 col-xs-12">
+                     <!--  Form -->
+                     <div class="form-grid">
+                           {% if form.errors %}
+                              <p>Your username or password isn't correct. Please try again.</p>
+                           {% endif %}
+                        {% if next %}
+                           {% if user.is_authenticated %}
+                              <p>Your account doesn't have access to this page. To proceed,
+                                  please login with an account that has access.
+                              </p>
+                          {% else %}
+                              <p>Please login to see this page.</p>
+                          {% endif %}
+                        {% endif %}
+                   <p>
+                       Please enter your name and password to log in.
+                   </p>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                           <div class="form-group">
+                              <span class="input-icon">
+                                 <i class="fa fa-user"></i>
+                                  <input type="text" class="form-control" name="username" placeholder="Username or Email">
+                              </span>
+                           </div>
+                           <div class="form-group">
+                              <span class="input-icon">
+                                  <i class="fa fa-lock"></i>
+                                  <input type="password" class="form-control password" name="password" placeholder="Password">
+                               </span>
+                           </div>
+                           <div class="form-group">
+                              <div class="row">
+                                 <div class="col-xs-12 col-sm-7">
+                                    <div class="skin-minimal">
+                                  <a class="forgot" href="{% url 'password_reset' %}">
+                                      I forgot my password
+                                  </a>
+                                    </div>
+                                 </div>
+                                 <div class="col-xs-12 col-sm-5 text-right">
+                                     <p> <span><a href="/accounts/register">Sign Up</a></span></p>
+                                 </div>
+                              </div>
+                           </div>
+                           <button class="btn btn-theme btn-lg btn-block">Login With Us</button>
+                        </form>
+                     </div>
+                     <!-- Form -->
+                  </div>
+                  <div class="col-md-7  col-md-pull-5  col-xs-12 col-sm-6">
+                     <div class="heading-panel">
+                        <h3 class="main-title text-left">
+                           Sign In to your account
+                        </h3>
+                     </div>
+                     <div class="content-info">
+                        <div class="features">
+                           <div class="features-icons">
+                              <img src="{% static 'images/icons/chat.png' %}" alt="img">
+                           </div>
+                           <div class="features-text">
+                              <h3>Chat & Messaging</h3>
+                              <p>
+                                 Access your chats and account info from any device.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="features">
+                           <div class="features-icons">
+                              <img src="{% static 'images/icons/panel.png' %}" alt="img">
+                           </div>
+                           <div class="features-text">
+                              <h3>User Dashboard</h3>
+                              <p>
+                                 Maintain a wishlist by saving your favourite items.
+                              </p>
+                           </div>
+                        </div>
+                        <span class="arrowsign hidden-sm hidden-xs"><img src="{% static 'images/arrow.png' %}" alt="" ></span>
+                     </div>
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+      <!-- Main Content Area End -->
+         <!-- MAP -->
+{% endblock content %}
+

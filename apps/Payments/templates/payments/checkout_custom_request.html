@@ -1,0 +1,460 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+
+      <!-- Small Breadcrumb -->
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="index.html">Home Page</a></li>
+                  <li><a href="#">Pages</a></li>
+                  <li><a class="active" href="#">Ad Detail</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bgs gray ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Middle Content Area -->
+                  <div class="col-md-8 col-xs-12 col-sm-12">
+                     <!-- Single Ad -->
+                     <div class="single-ad">
+                        <!-- Title -->
+                        <div class="ad-box">
+                           <h1>{{ request_interest.my_offer }}</h1>
+                           <div class="short-history">
+                              <ul>
+                                 <li>Published on: <b>{{ request_interest.date_created }}</b></li>
+                                 <li>Category: <b><a href="#">{{ request_interest.request.type_of_service }}</a></b></li>
+                                 <li>Location: <b>London</b></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Listing Slider  -->
+                        <div class="flexslider single-page-slider">
+                           <div class="flex-viewport">
+                              <ul class="slides slide-main">
+                                 {% if request_interest.interested_person.service_pic %}
+                                 <li class=""><img alt="" src="{{ request_interest.interested_person.service_pic.url }}" title=""></li>
+                                  {% else %}
+                                 <li><img src="{% static 'images/alt.jpg' %}"></li>
+                                 {% endif %}
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Listing Slider Thumb -->
+                        <!-- Share Ad  -->
+                        <div class="clearfix"></div>
+                        <!-- Short Description  -->
+                        <div class="ad-box">
+                           <!-- Short Features  -->
+                           <!-- Related Image  -->
+
+                           <!-- Ad Specifications -->
+                           <div class="specification">
+                              <!-- Heading Area -->
+                              <div class="heading-panel">
+                                 <h3 class="main-title text-left">
+                                     About Me
+                                 </h3>
+                              </div>
+                              <p>
+                                 samsung galaxy note 2 new condition with handsfree and charger urgent sale. with book pouch original 4g lte. 16 gb condition 10/10 andriod kitkat4.4.2
+                              </p>
+                              <p>
+                                 Bank Leased 5 Year plan 2013 Honda Civic 1.8 Vti Oriel Prosmatec Automatic ( New Shape ) Attractive Silver Color 1 year installments paid Lahore Reg number Well Maintained Insurance + tracker etc included Options: Sunroof
+                              </p>
+                              <p>
+                                 Chilled AC Power Windows Power Steering ABS braking system ETC 15000 km carefully driven No SMS / Email , Serious Buyers Requested To Call .
+                              </p>
+                              <p>
+                                 Chilled AC Power Windows Power Steering ABS braking system ETC 15000 km carefully driven No SMS / Email , Serious Buyers Requested To Call .
+                              </p>
+                              <p>
+                                 Bank Leased 5 Year plan 2013 Honda Civic 1.8 Vti Oriel Prosmatec Automatic ( New Shape ) Attractive Silver Color 1 year installments paid Lahore Reg number Well Maintained Insurance + tracker etc included Options: Sunroof
+                              </p>
+                           </div>
+                           <div class="clearfix"></div>
+                        </div>
+                     </div>
+                     <!-- Single Ad End -->
+                     <!-- Price Alert -->
+                     <div class="alert-box-container  margin-top-30">
+                                    <div class="well">
+                                       <h3>Create Alert</h3>
+                                       <p>Receive emails for the latest ads matching your search criteria</p>
+                                       <form>
+                                          <div class="row">
+                                             <div class="col-md-5 col-xs-12 col-sm-12">
+                                                <input placeholder="Enter Your Email " type="text" class="form-control">
+                                             </div>
+                                             <div class="col-md-4 col-xs-12 col-sm-12">
+                                                <select class="alerts">
+                                                   <option value="1">Daily</option>
+                                                   <option value="7">Weekly</option>
+                                                </select>
+                                             </div>
+                                             <div class="col-md-3 col-xs-12 col-sm-12">
+                                                <input class="btn btn-theme btn-block" value="Submit" type="submit">
+                                             </div>
+                                          </div>
+                                       </form>
+                                    </div>
+                                 </div>
+                     <!-- Price Alert End -->
+                     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+                     <div class="grid-panel margin-top-30">
+                        <div class="heading-panel">
+                           <div class="col-xs-12 col-md-12 col-sm-12">
+                              <h3 class="main-title text-left">
+                                 Featured Properties
+                              </h3>
+                           </div>
+                        </div>
+                        <!-- Ads Archive -->
+                        {% for p in featured %}
+                        <div class="posts-masonry">
+                           <div class="col-md-12 col-xs-12 col-sm-12">
+                              <!-- Ads Listing -->
+                              <div class="ads-list-archive">
+                                 <!-- Image Block -->
+                                 <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                    <!-- Img Block -->
+                                    <div class="ad-archive-img">
+                                       <a href="#">
+                                          <div class="ribbon popular"></div>
+                                          <img class="img-responsive" src="{{ p.property.main_view.url }}" alt="">
+                                       </a>
+                                    </div>
+                                    <!-- Img Block -->
+                                 </div>
+                                 <!-- Ads Listing -->
+                                 <div class="clearfix visible-xs-block"></div>
+                                 <!-- Content Block -->
+                                 <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                    <!-- Ad Desc -->
+                                    <div class="ad-archive-desc">
+                                       <!-- Price -->
+                                       <div class="ad-price">₦{{ p.property.price }}</div>
+                                       <!-- Title -->
+                                       <h3>{{ p.property.number_of_room }} {% if p %}Room {% endif %}{{ p.property.property_type}}  for {{ p.property.availability_type}}</h3>
+                                       <!-- Category -->
+                                       <div class="category-title"> <span><a href="#">{{ p.property.property_lga }} {{ p.property.property_state }}</a></span> </div>
+                                       <!-- Short Description -->
+                                       <div class="clearfix visible-xs-block"></div>
+                                       <p class="hidden-sm">{{ p.property.description|slice:'50'}}</p>
+                                       <!-- Ad Features -->
+                                       <ul class="add_info">
+                                          <!-- Contact Details -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Call Timings</h4>
+                                                   <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
+                                                   <br> <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                                   <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Address -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Address</h4>
+                                                   {{ p.property.property_lga }} {{ p.property.property_state }}
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                                <div class="tooltip-content"> <strong>Category</strong> <span class="label label-danger">{{ p.property.property_type }}</span> </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
+                                                <div class="tooltip-content"> <strong>Warrinty</strong> <span class="label label-danger">{{ p.property.availability_type }} </span> </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                       <!-- Ad History -->
+                                       <div class="clearfix archive-history">
+                                          <div class="last-updated">{{ p.date_created }}</div>
+                                          <div class="ad-meta"> <a class="btn btn-success" href="{%  url 'agents:property_detail' p.property.pk %}"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                       </div>
+                                    </div>
+                                    <!-- Ad Desc End -->
+                                 </div>
+                                 <!-- Content Block End -->
+                              </div>
+                           </div>
+                        </div>
+                        {% empty %}
+                        <h3><em>No featured Property</em></h3>
+                        {% endfor %}
+                     </div>
+                     <!-- =-=-=-=-=-=-= Latest Ads End =-=-=-=-=-=-= -->
+                  </div>
+                  <!-- Right Sidebar -->
+                  <div class="col-md-4 col-xs-12 col-sm-12">
+                     <!-- Sidebar Widgets -->
+                     <div class="sidebar">
+                        <div class="ad-listing-price">
+                           <p><a href="#"></a></p>
+                        </div>
+                        <!-- User Info -->
+                        <div class="white-bg user-contact-info">
+                           <div class="user-info-card">
+                              <div class="user-photo col-md-4 col-sm-3  col-xs-4">
+                                 <img src="{{ request_interest.interested_person.provider.photo.url }}" alt="profile picture">
+                              </div>
+                              <div class="user-information no-padding col-md-8 col-sm-9 col-xs-8">
+                                 <span class="user-name"><a class="hover-color" href="profile.html">{{ request_interest.interested_person.full_name }}</a></span>
+                                 <div class="item-date">
+                                    <span class="ad-pub">Published on: {{ request_interest.date_created }}</span><br>
+                                 </div>
+                              </div>
+                              <div class="clearfix"></div>
+                           </div>
+                           <div class="ad-listing-meta">
+                              <ul>
+                                 <li>Ad Id: <span class="color">A{{ request_interest.pk}}3</span></li>
+                                 <li>Categories: <span class="color">{{ request_interest.request.type_of_service }}</span></li>
+                                 <li>Visits: <span class="color">9</span></li>
+                                 <li>Location: <span class="color">{{ request_interest.interested_person.provider.lga}}, {{ request_interest.interested_person.provider.state }}</span></li>
+                                 <li>
+                                     <a type="button" class="btn btn-success" id="grant" href="{% url 'service:approve_request' request_interest.pk %}">
+                                        Proceed to Grant (₦{{ request_interest.price_offer}})
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Featured Ads -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Training(s) and Certification(s)</a></h4>
+                           </div>
+                           <div class="widget-content">
+                              <div class="featured-slider-3">
+                                 <!-- Featured Ads -->
+                                 {% for providerbuild in request_interest.interested_person.providerbuild_set.all %}
+                                 <div class="item">
+                                    <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                       <!-- Ad Box -->
+                                       <div class="category-grid-box">
+                                          <!-- Ad Img -->
+                                          <div class="category-grid-img">
+                                             <img class="img-responsive" alt="" src="{{ providerbuild.cert_evidence.url }}">
+                                             <!-- Ad Status -->
+                                             <!-- User Review -->
+                                             <div class="user-preview">
+                                                <a href="#"> <img src="{{ object.photo.url }}" class="avatar avatar-small" alt=""> </a>
+                                             </div>
+                                             <!-- View Details --><a href="" class="view-details">View Details</a>
+                                          </div>
+                                          <!-- Ad Img End -->
+                                          <div class="short-description">
+                                             <!-- Ad Category -->
+                                             <div class="category-title"> <span><a href="#">Issued:{{ providerbuild.date_acquired }}</a></span> </div>
+                                             <!-- Ad Title -->
+                                             <h3><a title="" href="single-page-listing.html">{{ providerbuild.certificate_name }} Certification</a></h3>
+                                             <!-- Price -->
+                                             <div class="price">Issued By:{{ providerbuild.issuer }}<span class="negotiable"></span></div>
+                                          </div>
+                                          <!-- Addition Info -->
+                                       </div>
+
+                                       <!-- Ad Box End -->
+                                    </div>
+                                 </div>
+                                {% endfor %}
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Recent Ads -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a> Ratings</a></h4>
+                           </div>
+                           <div class="widget-content recent-ads">
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-1.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Sony Xperia Z1</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 17,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-2.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">2017 BMW i8</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 66,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-3.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Dell Latitude e7440</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 37,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-4.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Sport Stylish Steering</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 11,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-5.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Apple Wrist Watches</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 20,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Saftey Tips  -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Safety tips for deal</a></h4>
+                           </div>
+                           <div class="widget-content saftey">
+                              <ol>
+                                 <li>Use a safe location to meet seller</li>
+                                 <li>Avoid cash transactions</li>
+                                 <li>Beware of unrealistic offers</li>
+                              </ol>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Sidebar Widgets End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+{% endblock %}

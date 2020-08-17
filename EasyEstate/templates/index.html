@@ -1,0 +1,1168 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KMPSFDD');</script>
+<!-- End Google Tag Manager -->
+
+      <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+      <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <![endif]-->
+      <meta name="description" content="Real Estate Platform for both property sale, lease and rent and Real Estate Service sellers and buyers">
+      <meta name="author" content="ScriptsBundle">
+      <meta content="A platform for Agents, Plumbers, Interior Designer, Electricians, Mover, Painters  can create awareness of what they offer and Accommodation and landed properties seekers can find the house, property or service they need" name="description" />
+       <meta content="EasyHousing" name="author" />
+       <meta property="og:title" content="EasyHousing"/>
+       <meta property="og:type" content="website"/>
+       <meta property="og:url" content="https://EasyHousing.com.ng/" />
+       <meta property="og:site_name" content="EasyHousing"/>
+       <meta property="og:description" content="A platform for Agents, Plumbers, Interior Designer, Electricians, Mover, Painters  can create awareness of what they offer and Accommodation and landed properties seekers can find the house, property or service they need."/>
+       <meta name="keywords" content="Accommodation, House, housing, Online, Office Space, Bungalow, Flat, Self Contain, Duplex, Land, landed property, Painter, painting, family house, family, Electrician, wiring, Interior, Interior Designer, Interior Designing, Plumber, Plumbing, Moving, Box, Accommodation, Nigeria, Professional , Business space, relocating, business, real estate, duplex, swimming pool, carpenter, architect, building plan" />
+      <title>EasyHousing | your home comfort our pride</title>
+      <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
+       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      {% include 'links.html' %}
+      <!-- JavaScripts -->
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+
+      <![endif]-->
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+   	   <style>
+         html, body {
+            width:100%;
+            height:100%;
+            margin:0px;
+            padding:0; 
+         }
+
+         #h li a{
+            color:#fff;
+         }
+         #h li a:hover {
+            color:#7dba21;
+         }
+         .i li a{
+            color:#fff;
+         }
+         .i li a:hover {
+            color:#7dba21;
+         }
+
+         .i {
+            -moz-column-count: 2;
+            -moz-column-gap: 0px;
+            -webkit-column-count: 2;
+            -webkit-column-gap: 0px;
+            column-count: 2;
+            column-gap: 0px;
+        }
+
+         slider {
+         	
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+            overflow: hidden;
+            position: absolute;
+         }
+
+         slider > * {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: blue;
+            animation: slide 12s infinite;
+            overflow: hidden;
+         }
+
+         slide:nth-child(1) {
+            left: 0%;
+            animation-delay: -1s;
+            background-image:url("{% static 'images/slider1.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+
+         slide:nth-child(2) {
+            animation-delay: 2s;
+            background-image:url("{% static 'images/slider2.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+
+         slide:nth-child(3) {
+            animation-delay: 5s;
+            background-image:url("{% static 'images/slider3.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+         slide:nth-child(4) {
+            animation-delay: 8s;
+            background-image:url("{% static 'images/slider4.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+         @keyframes slide {
+            0% {left: 100%; width: 100%;}
+            10% {left: 0%;}
+            25% {left: 0%;}
+            30% {left: -100%; width: 100%;}  
+            30.0001% {left: -100%; width: 0%;}
+            100% {left: 100%; width: 0%;}                               
+         }
+
+         #my_Overlay {
+         	background-color: rgba(0,0,0,0.7);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+         }
+
+         sliders {
+         	
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+            overflow: hidden;
+            position: absolute;
+         }
+
+         sliders > * {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: blue;
+            animation: slide 12s infinite;
+            overflow: hidden;
+
+         }
+
+         slides:nth-child(1) {
+            left: 0%;
+            animation-delay: -1s;
+            background-image:url("{% static 'images/slider2.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+
+         slides:nth-child(2) {
+            animation-delay: 2s;
+            background-image:url("{% static 'images/slider4.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+
+         slides:nth-child(3) {
+            animation-delay: 5s;
+            background-image:url("{% static 'images/slider1.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+         slides:nth-child(4) {
+            animation-delay: 8s;
+            background-image:url("{% static 'images/slider3.jpg' %}");
+            background-size: cover;
+            background-position: center;
+
+         }
+
+         @keyframes slides {
+            0% {left: 100%; width: 100%;}
+            10% {left: 0%;}
+            25% {left: 0%;}
+            30% {left: -100%; width: 100%;}  
+            30.0001% {left: -100%; width: 0%;}
+            100% {left: 100%; width: 0%;}                               
+         }
+         @media screen and (max-width: 600px){
+            #hero .search-holder .nav-tabs li:nth-child(1) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(2) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(3) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(4) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(5) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(6) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(7) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(8) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(9) a {
+                background: none repeat scroll 0 0;
+            }
+            #hero .search-holder .nav-tabs li:nth-child(10) a {
+                background: none repeat scroll 0 0;
+            }
+         }
+
+         @media screen and (max-width: 600px){
+            #hero .search-holder .nav-tabs > li > a {
+                float: left;
+                width: 130%;
+            }
+         }
+   </style>
+
+   </head>
+   <body>
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMPSFDD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+      <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
+      {% block loader %}
+
+      {% endblock %}
+
+        <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
+
+      <!-- =-=-=-=-=-=-= Solid Header =-=-=-=-=-=-= -->
+      <div class="colored-header">
+         <!-- Top Bar-->
+         <div class="header-top">
+            <div class="container " style="padding-top: 0px">
+            <div class="row">
+            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+               <!-- Header Top Left -->
+               <div class="header-top-left col-md-8 col-sm-6 col-xs-12">
+                  <p><i class="fa fa-caret-right"></i><a href="#">Support</a></p>
+                    {% if user.is_authenticated %}
+                   {% else %}
+                   <p><i class="fa fa-unlock"></i><a href="/accounts/register">Register</a></p>
+                   {% endif %}
+                  {% if user.is_authenticated %}
+                   <p><i class="fa fa-sign-in"></i><a href="/account/logout">Logout</a></p>
+                   {% else %}
+                   <p><i class="fa fa-sign-in"></i><a href="/accounts/login">Login</a></p>
+                   {% endif %}
+               </div>
+               <!-- Header Top Right Social -->
+              </div>
+            </div>
+         </div>
+         </div>
+         {% block menu %}
+         <!-- menu start -->
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+            <!-- menu list items container -->
+               <section class="menu-list-items" style="height:90px">
+                   <div class="navbar-header" >
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar btn-success"></span>
+                            <span class="icon-bar btn-success"></span>
+                            <span class="icon-bar btn-success"></span>
+                          </button>
+                            <ul class="navbar-brand">
+                                <li>
+                                    <a href="{% url 'index' %}"><img src="{% static 'images/easy.jpg' %}" alt="logo" style="width:50%; height:50%;"> </a>
+                                </li>
+                            </ul>
+                   </div>
+                   <nav class="mega-menu" id="menu-1" role="navigation" style="bottom:20px;">
+                        <div class="container collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-top:0px;">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                  <!-- menu logo -->
+                                  <!-- menu links -->
+                                  <ul class="menu-links nav navbar-nav" >
+                                     <!-- active class -->
+                                     <li class="" >
+                                         <a href="{% url 'index' %}" style="font-size:18px;">
+                                             <i class="fa fa-home" style="margin-right:5px;"></i>Home</a>
+                                     </li>
+                                     {% if user.is_authenticated %}
+                                      {% block dashboard %}
+                                     <li>
+                                        <a {% if user.profile %}href="{% url 'common:profile' user.profile.pk %}"{% endif %} style="font-size:17px;">
+                                            <i class="fa fa-user-o" aria-hidden="true" style="margin-right:5px;"></i>Dashboard
+                                        </a>
+                                     </li>
+                                      {% endblock %}
+                                     {% endif %}
+                                     <li>
+                                         <a href="" style="font-size:17px;">
+                                             <i class="flaticon-dialog" style="margin-right:5px;"></i>Blog
+                                         </a>
+                                     </li>
+                                     <li>
+                                         <a class="btn" data-toggle="modal" data-target=".price-quote" style="font-size:17px;">
+                                             <i class="flaticon-man" style="margin-right:5px;"></i>Contact
+                                         </a>
+                                     </li>
+                                      <li>
+                                          {% if user.is_authenticated %}
+                                          <a style="font-size:17px;" {% if user.profile %} href="{% url 'agents:property_upload' user.profile.pk %}"  {% endif %} class="btn btn-light">
+                                            <i class="fa fa-plus" aria-hidden="true" style="margin-right:5px;"></i>Post A Property
+                                          </a>
+                                          {% else %}
+                                          <a href="/accounts/login" class="btn btn-light" style="font-size:17px;">
+                                          <i class="fa fa-plus" aria-hidden="true" style="margin-right:5px;"></i>Post A Property </a>
+                                          {% endif %}
+                                      </li>
+                                  </ul>
+                                </div>
+                        </div>
+                  </div>
+                 </nav>
+               </section>
+
+         <!-- Navigation Menu End -->
+          {% endblock menu %}
+      </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+      <!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
+      {% block search %}
+
+      <div id="search-section">
+         <div class="container" style="padding-top: 0px">
+            <div class="row">
+            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                  <!-- Form -->
+                  <form method="get" class="search-form" action="/agents/search-result/" id="form">
+                          <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
+                         <select class="form-control js-example-placeholder-single-type" name="property_type" id="property_type" required onKeyup="checkform()">
+                             <option value="" disabled selected>Property Type</option>
+                             {% for category in cat%}
+                            <option value="{{ category.name }}">{{ category.name }}</option>
+                           {% endfor %}
+                        </select>
+                     </div>
+                          <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                         <input type="text"  class="form-control" name="state" id="state" placeholder='State' required onKeyup="checkform()"/>
+                     </div>
+                          <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                         <input type="text"  class="form-control" name="lga" id="lga" placeholder='LGA' required onKeyup="checkform()"/>
+                     </div>
+                          <div class="col-md-2 col-xs-12 col-sm-4 no-padding" id="pric_max">
+                         <select class="js-example-placeholder-single-price form-control" name="price_max" id="price_max" required onKeyup="checkform()">
+                             <option value="" disabled selected>Max Price</option>
+                             {% for max in max_price %}
+                             <option value="{{ forloop.counter0 }}">{{ max.price }}</option>
+                             {% endfor %}
+                        </select>
+                     </div>
+                     <!-- Search Button -->
+                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
+                        <button type="submit" class="btn btn-block btn-light" id="submitbutton">Search</button>
+                     </div>
+                  </form>
+                  <!-- end .search-form -->
+                  </div>
+               </div>
+         </div>
+      </div>
+<script>
+     $('body').on('change','select', function (ev){
+    if($(this).find('option:selected').val() == ""){
+        $(this).css('color','#999');
+        $(this).children().css('color','black');
+    }
+    else {
+        $(this).css('color','black');
+        $(this).children().css('color','black');
+    }
+});
+</script>
+      {% endblock search %}
+      <!-- =-=-=-=-=-=-= Advance Search End  =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Hero Category Section =-=-=-=-=-=-= -->
+      {% block hero %}
+      <section id="hero" class="hero bg-img" style="padding-top: 0px; ">
+      	<slider>
+			<slide></slide>
+			<slide></slide>
+			<slide></slide>
+			<slide></slide>
+		</slider>
+
+		<div id = "my_Overlay"></div>
+
+         <div class="content">
+            <h2>Getting <b style="color:#7dba21;">Your</b> Desired <b style="color:#7dba21;">Property</b> the <b style="color:#7dba21;">Easy</b> way </h2>
+            <p>EasyHousing <b style="color:#7dba21;"> Service</b> Provider<b style="color:#7dba21;"> Categories</b></p>
+            <h1>Search from largest  classifieds marketplace & Post unlimited classifieds free!</h1>
+            <div class="search-holder">
+               <ul class="nav nav-tabs"  id="o">
+                  <!-- Category -->
+                  {% for service in services %}
+                    <li class="clearfix" id="fade" >
+                        {% if service.icon.name == "cleaning" %}
+                             <a href="{% url 'common:service' service.pk %}" >
+                                 <i class="flaticon-cleaning-1"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "plumbing" %}
+                             <a href="{% url 'common:service' service.pk %}" id="y" >
+                                 <i class="flaticon-buildings p"></i>
+                                 <span style="position:relative; right:13px;" >{{ service.service }}</span>
+                             </a>
+                        {% elif service.icon.name == "valuing" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-construction-4 p"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "surveying" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-construction-4 p"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "wood work" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-construction-4 p"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "architecture" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-construction-4" p></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "wiring" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-construction-2 p"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "interior" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-apartment p"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "moving" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-transport-12 p"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                        {% elif service.icon.name == "painting" %}
+                             <a href="{% url 'common:service' service.pk %}">
+                                 <i class="flaticon-construction-1 p"></i>
+                                 <span style="position:relative; right:13px;">{{ service.service }} </span>
+                             </a>
+                     {% endif %}
+                  </li>
+                 {% endfor %}
+               </ul>
+            </div>
+            <!-- .search-holder -->
+         </div>
+         <!-- .content -->
+      </section>
+      {% endblock hero%}
+      <!-- =-=-=-=-=-=-= Hero Category Section  End =-=-=-=-=-=-= -->
+      {% block content %}
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Featured Listing =-=-=-=-=-=-= -->
+         <section class="custom-padding">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Heading Area -->
+                  <div class="heading-panel">
+                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title -->
+                        <h1>Top <span class="heading-color"> Rating</span> Professionals</h1>
+                        <!-- Short Description -->
+                        <p class="heading-text">Meet the top rated service providers on EasyEsate</p>
+                     </div>
+                  </div>
+                  <!-- Middle Content Box -->
+                  <div class="col-md-12 col-xs-12 col-sm-12">
+                     {% if r %}
+                     <div class="col-md-4 col-xs-12 col-sm-6">
+                        <!-- Ad Box -->
+                        <div class="category-grid-box">
+                           <!-- Ad Img -->
+                           <div class="category-grid-img">
+                              <img class="img-responsive" alt="" src="">
+                              <!-- Ad Status -->
+                              <!-- User Review -->
+                              <div class="user-preview">
+                                 <a href="#"> <img  class="avatar avatar-small" alt=""> </a>
+                              </div>
+                              <!-- View Details --><a href="" class="view-details">View Details</a>
+                              <!-- Additional Info -->
+                              <div class="additional-information">
+                                 <p>Registration 2017</p>
+                                 <p> 3.0 Diesel</p>
+                                 <p> 230 HP</p>
+                                 <p> Body Coupe</p>
+                                 <p> 80 000 Miles</p>
+                              </div>
+                              <!-- Additional Info End-->
+                           </div>
+                           <!-- Ad Img End -->
+                           <div class="short-description">
+                              <!-- Ad Category -->
+                              <div class="category-title"> <span><a href="#">Electronics & Gedgets</a></span> </div>
+                              <!-- Ad Title -->
+                              <h3><a title="" href="single-page-listing.html">Porsche 911 Carrera 2017 </a></h3>
+                              <!-- Price -->
+                              <div class="price">$96,100 <span class="negotiable">(Negotiable)</span></div>
+                           </div>
+                           <!-- Addition Info -->
+                           <div class="ad-info">
+                              <ul>
+                                 <li><i class="fa fa-map-marker"></i>London</li>
+                                 <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Ad Box End -->
+                     </div>
+                     {% else %}
+                      <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Short Description -->
+                        <p class="heading-text">No Top Rated Professionals Yet</p>
+                     </div>
+                     {% endif %}
+                  </div>
+                  <!-- Middle Content Box End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Featured Listing End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Parallex Section =-=-=-=-=-=-= -->
+          <div class="funfacts custom-padding parallex">
+
+		<sliders>
+			<slides></slides>
+			<slides></slides>
+			<slides></slides>
+			<slides></slides>
+		</sliders>
+
+		<div id = "my_Overlay"></div>
+              <div class="container">
+                  <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                  <!-- Main Title -->
+                  <h1>Latest<span class="heading-color" style="padding-bottom:100px;"> Featured</span> Properties</h1>
+                  <!-- Short Description -->
+              </div>
+               {% if r %}
+               <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-home-1"></i>
+                     </div>
+                     <div class="number"><span>{{ featured|length }}</span>+</div>
+                     <h4>Fea<span>tured</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-home-2"></i>
+                     </div>
+                     <div class="number"><span>{{ listed|length }}</span>+</div>
+                     <h4>Pro<span>perties</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-people-1"></i>
+                     </div>
+                     <div class="number"><span>{{ active_users|length }}</span>+</div>
+                     <h4>Active <span>Users</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="icons">
+                        <i class="flaticon-businessman-paper-of-the-application-for-a-job"></i>
+                     </div>
+                     <div class="number"><span>{{ jobs|length }}</span>+</div>
+                     <h4>Active <span>Jobs</span></h4>
+                  </div>
+               </div>
+                {% endif %}
+               <!-- /.row -->
+            </div>
+
+            <!-- /.container -->
+         </div>
+        <div class="clearfix"></div>
+         <!-- =-=-=-=-=-=-= Parallex Section End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Abs By Countries =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Abs By Countries End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Trending Ads =-=-=-=-=-=-= -->
+         <section class="custom-padding">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Heading Area -->
+                  <div class="heading-panel">
+                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title -->
+                        <!--<h1>Latest<span class="heading-color"> Featured</span> Properties</h1>-->
+                        <!-- Short Description -->
+                        <p class="heading-text"> Properties Featured On EasyHousing</p>
+                     </div>
+                  </div>
+                  <!-- Middle Content Box -->
+                  <div class="col-md-12 col-xs-12 col-sm-12">
+                     <ul class="list-unstyled">
+                         <!-- Temporal featured list -->
+                         {% for p in property|slice:":10" %}
+                         <li>
+                           <div class="well ad-listing clearfix">
+                              <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
+                                 <!-- Image Box -->
+                                 <div class="img-box">
+                                    <img src="{{ p.main_view.url }}" class="img-responsive" alt="property image">
+                                    <div class="total-images"><strong>8</strong> photos </div>
+                                    <div class="quick-view"> <a href="#ad-preview" data-toggle="modal" class="view-button"><i class="fa fa-search"></i></a> </div>
+                                 </div>
+                                 <!-- Ad Status --><span class="ad-status"> Featured </span>
+                                 <!-- User Preview -->
+                                 <div class="user-preview">
+                                    <a href="#">
+                                        {% if p.created_by.photo %}
+                                          <img src="{{ p.created_by.photo.url }}" class="avatar avatar-small" alt="user image">
+                                            {% elif 'M' in p.created_by.gender %}
+                                        <img src="{% static 'images/male-avatar.jpg' %}" class="avatar avatar-small" alt="user image">
+                                            {% else %}
+                                                <img src="{% static 'images/female-avatar.png' %}" class="avatar avatar-small" alt="user image">
+                                            {% endif %}
+
+                                 </div>
+                              </div>
+                              <div class="col-md-9 col-sm-7 col-xs-12">
+                                 <!-- Ad Content-->
+                                 <div class="row">
+                                    <div class="content-area">
+                                       <div class="col-md-9 col-sm-12 col-xs-12">
+                                          <!-- Category Title -->
+                                          <div class="category-title"> <span><a href="#">{{ p.property_type }}</a></span> </div>
+                                          <!-- Ad Title -->
+                                          <h3><a>{{ p.number_of_room }} Bedroom {{ p.property_type }} for {{ p.availability_type }}</a></h3>
+                                          <!-- Info Icons -->
+                                          <ul class="additional-info pull-right">
+                                             <li>
+                                                <a data-toggle="tooltip" title="Send Message" href="#" class="fa fa-envelope"></a>
+                                             </li>
+                                             <li>
+                                                <a data-toggle="tooltip" title="+92-4567-123" href="#" class="fa fa-phone"></a>
+                                             </li>
+                                             <li>
+                                                <a data-toggle="tooltip" title="Bookmark" href="#" class="fa fa-heart"></a>
+                                             </li>
+                                          </ul>
+                                          <!-- Ad Meta Info -->
+                                          <ul class="ad-meta-info">
+                                             <li> <i class="fa fa-map-marker"></i><a href="#">{{ p.property_lga }} {{ p.property_state }}</a> </li>
+                                             <li> <i class="fa fa-clock-o"></i>{{ p.date_created }} </li>
+                                          </ul>
+                                          <!-- Ad Description-->
+                                          <div class="ad-details">
+                                             <p>{{ p.description }}</p>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-3 col-xs-12 col-sm-12">
+                                          <!-- Ad Stats -->
+                                          <div class="short-info">
+                                             <div class="ad-stats hidden-xs"><span>Available for  : </span>{{ p.availability_type }}</div>
+                                             <div class="ad-stats hidden-xs"><span>Status : </span>{{ p.running }}</div>
+                                             <div class="ad-stats hidden-xs"><span>Category : </span>{{ p.property_type }}</div>
+                                          </div>
+                                          <!-- Price -->
+                                          <div class="price"> <span>₦{{ p.price }}</span> </div>
+                                          <!-- Ad View Button -->
+                                          <a type="button" href="{% url 'agents:property_detail' p.pk %}" class="btn btn-block btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View Ad.</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!-- Ad Content End -->
+                              </div>
+
+                           </div>
+                        </li>
+                         {% empty %}
+                         <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title --><!-- Short Description -->
+                        <p class="heading-text">No Featured Properties Yet</p>
+                        </div>
+                        {% endfor %}
+                        <!-- To be used when we start collecting payment-->
+                         {% if r %}
+                        {% for p in properties %}
+                        <li>
+                           <div class="well ad-listing clearfix">
+                              <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
+                                 <!-- Image Box -->
+                                 <div class="img-box">
+                                    <img src="{{ p.property.main_view.url }}" class="img-responsive" alt="property image">
+                                    <div class="total-images"><strong>8</strong> photos </div>
+                                    <div class="quick-view"> <a href="#ad-preview" data-toggle="modal" class="view-button"><i class="fa fa-search"></i></a> </div>
+                                 </div>
+                                 <!-- Ad Status --><span class="ad-status"> Featured </span>
+                                 <!-- User Preview -->
+                                 <div class="user-preview">
+                                    <a href="#"> <img src="{{ p.property.created_by.photo.url }}" class="avatar avatar-small" alt="user image"> </a>
+                                 </div>
+                              </div>
+                              <div class="col-md-9 col-sm-7 col-xs-12">
+                                 <!-- Ad Content-->
+                                 <div class="row">
+                                    <div class="content-area">
+                                       <div class="col-md-9 col-sm-12 col-xs-12">
+                                          <!-- Category Title -->
+                                          <div class="category-title"> <span><a href="#">{{ p.property.property_type }}</a></span> </div>
+                                          <!-- Ad Title -->
+                                          <h3><a>{{ p.property.number_of_room }} Bedroom {{ p.property.property_type }} for {{ p.property.availability_type }}</a></h3>
+                                          <!-- Info Icons -->
+                                          <ul class="additional-info pull-right">
+                                             <li>
+                                                <a data-toggle="tooltip" title="Send Message" href="#" class="fa fa-envelope"></a>
+                                             </li>
+                                             <li>
+                                                <a data-toggle="tooltip" title="+92-4567-123" href="#" class="fa fa-phone"></a>
+                                             </li>
+                                             <li>
+                                                <a data-toggle="tooltip" title="Bookmark" href="#" class="fa fa-heart"></a>
+                                             </li>
+                                          </ul>
+                                          <!-- Ad Meta Info -->
+                                          <ul class="ad-meta-info">
+                                             <li> <i class="fa fa-map-marker"></i><a href="#">{{ p.property.property_lga }} {{ p.property.property_state }}</a> </li>
+                                             <li> <i class="fa fa-clock-o"></i>{{ p.property.date_created }} </li>
+                                          </ul>
+                                          <!-- Ad Description-->
+                                          <div class="ad-details">
+                                             <p>{{ p.property.description }}</p>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-3 col-xs-12 col-sm-12">
+                                          <!-- Ad Stats -->
+                                          <div class="short-info">
+                                             <div class="ad-stats hidden-xs"><span>Available for  : </span>{{ p.property.availability_type }}</div>
+                                             <div class="ad-stats hidden-xs"><span>Status : </span>{{ p.property.running }}</div>
+                                             <div class="ad-stats hidden-xs"><span>Category : </span>{{ p.property.property_type }}</div>
+                                          </div>
+                                          <!-- Price -->
+                                          <div class="price"> <span>₦{{ p.property.price }}</span> </div>
+                                          <!-- Ad View Button -->
+                                          <a type="button" href="{% url 'agents:property_detail' p.property.pk %}" class="btn btn-block btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View Ad.</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!-- Ad Content End -->
+                              </div>
+
+                           </div>
+                        </li>
+                        {% empty %}
+                         <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title -->
+
+                        <!-- Short Description -->
+                        <p class="heading-text">No Featured Properties Yet</p>
+                     </div>
+                        {% endfor %}
+                        {% endif %}
+                     </ul>
+                     {% block paginate %}
+                     <div class="text-center">
+                         {% if properties.has_other_pages %}
+                          <ul class="pagination">
+                            {% if properties.has_previous %}
+                              <li><a href="?page={{ properties.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                              <li class="disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in properties.paginator.page_range %}
+                              {% if properties.number == i %}
+                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                              {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                              {% endif %}
+                            {% endfor %}
+                            {% if properties.has_next %}
+                              <li><a href="?page={{ properties.next_page_number }}">&raquo;</a></li>
+                            {% else %}
+                              <li class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                          </ul>
+                        {% endif %}
+                     </div>
+                     {% endblock %}
+                  </div>
+                  <!-- Middle Content Box End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Trending Ads End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= App Download Section =-=-=-=-=-=-= -->
+         {% if r %}
+         <div class="app-download-section style-2">
+            <!-- app-download-section-wrapper -->
+            <div class="app-download-section-wrapper">
+               <!-- app-download-section-container -->
+               <div class="app-download-section-container">
+                  <!-- container -->
+                  <div class="container">
+                     <!-- row -->
+                     <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                           <div class="mobile-image-content"> <img src="{% static 'images/hand.png' %}" alt=""> </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                           <div class="app-text-section">
+                              <h5>Download our app</h5>
+                              <h3>Get Our App For Your Mobile</h3>
+                              <ul>
+                                 <li>Find nearby cars in your network with Scholar</li>
+                                 <li>Browse real hirers reviews to know why choose Scholar</li>
+                                 <li>Rent a car so easy with a tap !</li>
+                                 <li>Rent a car so easy with a tap !</li>
+                              </ul>
+                              <div class="app-download-btn">
+                                 <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                       <!-- Windows Store -->
+                                       <a href="#" title="Windows Store" class="btn app-download-button">
+                                       <span class="app-store-btn">
+                                       <i class="fa fa-windows"></i>
+                                       <span>
+                                       <span>Download From</span>
+                                       <span>Windows Store </span>
+                                       </span>
+                                       </span>
+                                       </a>
+                                       <!-- /Windows Store -->
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                       <!-- Windows Store -->
+                                       <a href="#" title="Windows Store" class="btn app-download-button"> <span class="app-store-btn">
+                                       <i class="fa fa-apple"></i>
+                                       <span>
+                                       <span>Download From</span> <span>Apple Store </span> </span>
+                                       </span>
+                                       </a>
+                                       <!-- /Windows Store -->
+                                    </div>
+                                    <!-- Windows Store -->
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /row -->
+                  </div>
+                  <!-- /container -->
+               </div>
+               <!-- /app-download-section-container -->
+            </div>
+            <!-- /download-section-wrapper -->
+         </div>
+         {% endif %}
+         <!-- =-=-=-=-=-=-= App Download Section End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Partners =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Partners End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         {% endblock content %}
+         {% block footer %}
+         <footer class="footer-area">
+            <!--Footer Upper-->
+            <div class="footer-content">
+               <div class="container" style="padding-top: 0px ">
+                  <div class="row clearfix">
+                     <!--Two 4th column-->
+                     <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                           <div class="col-lg-7 col-sm-6 col-xs-12 column">
+                              <div class="footer-widget about-widget">
+                              <div class="heading-panel">
+                                 <h4 id="heading-panel" class="main-title text-left">Services</h4>
+                              </div>
+                                 <ul class="contact-info i" style="right:30px;">
+                                    {% for service in services %}
+                                        <li><a href="{% url 'common:service' service.pk %}">{{ service.service }}</a></li>
+                                    {% endfor %}
+                                 </ul>
+                              </div>
+                           </div>
+                           <!--Footer Column-->
+                           <div class="col-lg-5 col-sm-6 col-xs-12 column">
+                              <div class="heading-panel">
+                                 <h4 id="heading-panel" class="main-title text-left">Follow Us</h4>
+                              </div>
+                              <div class="widget socail-icons">
+                                 <ul id="h" class="i">
+                                      <li><a class="fb" href="" target="_blank"><i class="fa fa-facebook"></i><span>  Facebook</span></a></li>
+                                     <br>
+                                      <li><a class="twitter" href="https://twitter.com/estate_easy" target="_blank"><i class="fa fa-twitter"></i><span>  Twitter</span></a></li>
+                                     <br>
+                                      <li><a class="linkedin" href="https://www.instagram.com/EasyHousing.africa/" target="_blank"><i class="fa fa-instagram"></i><span>  Instagram</span></a></li>
+                                     <br>
+                                      <li><a class="googleplus" href="https://www.linkedin.com/in/easy-estate-789047163" target="_blank"><i class="fa fa-linkedin"></i><span> Linkedin</span></a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Two 4th column End-->
+                     <!--Two 4th column-->
+                     <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                           <!--Footer Column-->
+                           <div class="col-lg-7 col-sm-6 col-xs-12 column">
+                              <div class="footer-widget news-widget">
+                                 <div class="heading-panel">
+                                    <h4 id="heading-panel" class="main-title text-left"> Latest News</h4>
+                                 </div>
+                                 <!--News Post-->
+                                 <div class="news-post">
+                                    <div class="icon"></div>
+                                    <div class="news-content">
+                                       <figure class="image-thumb"><img alt="" src="{% static 'images/blog.jpg' %}"></figure>
+                                       <a href="#">If you need a house, or landed properties of any type you can reach us today</a>
+                                    </div>
+                                    <div class="time">July 2, 2014</div>
+                                 </div>
+                                 <!--News Post-->
+                                 <div class="news-post">
+                                    <div class="icon"></div>
+                                    <div class="news-content">
+                                       <figure class="image-thumb"><img alt="" src="{% static 'images/blog.jpg' %}"></figure>
+                                       <a href="#">If you need house service provider, to fix anything in your house, reach us today..</a>
+                                    </div>
+                                    <div class="time">July 2, 2014</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Footer Column-->
+                           <div class="col-lg-5 col-sm-6 col-xs-12 column">
+                              <div class="footer-widget links-widget">
+                                 <div class="heading-panel">
+                                    <h4 id="heading-panel"class="main-title text-left"> Quick Links</h4>
+                                 </div>
+                                 <ul class="i">
+                                    <li><a href="{% url 'common:about_us' %}">About Us</a></li>
+                                    <li><a href="#">Our Team</a></li>
+                                    <li><a href="{% url 'index' %}">One Page</a></li>
+                                    <li><a href="#">Our Forum</a></li>
+                                    <li><a href="">Our Blog</a></li>
+                                    <li><a href="">FAQ</a></li>
+                                    <li><a href="">Sitemap</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Two 4th column End-->
+                  </div>
+               </div>
+            </div>
+            <!--Footer Bottom-->
+            <div class="footer-copyright">
+               <div class="container clearfix">
+                  <!--Copyright-->
+                  <div class="copyright text-center">© <em id="date"></em> Easy<a href="" target="_blank">Housing</a> All Rights Reserved</div>
+                  <script>
+                    d = new Date()
+                    document.getElementById("date").innerHTML = d.getFullYear();
+                  </script>
+               </div>
+            </div>
+         </footer>
+         {% endblock %}
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+      <!-- Main Content Area End -->
+
+
+        <!-- =-=-=-=-=-=-= Quote Modal =-=-=-=-=-=-= -->
+      <div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true" id="">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                  <h3 class="modal-title" id="lineModalLabel">Contact Us</h3>
+               </div>
+               <div class="modal-body">
+                  <div class="recent-ads">
+                     <div class="recent-ads-list">
+                        <div class="recent-ads-container">
+                           <div class="recent-ads-list-image">
+                              <a href="#" class="recent-ads-list-image-inner">
+                              <img src="{% static 'images/easy1.jpg' %}" alt="">
+                              </a><!-- /.recent-ads-list-image-inner -->
+                           </div>
+                           <!-- /.recent-ads-list-image -->
+                           <div class="recent-ads-list-content">
+                              <h3 class="recent-ads-list-title">
+                                 <a href="#">EasyHousing Nigeria</a>
+                              </h3>
+                              <ul class="recent-ads-list-location">
+                                 <li><a href="#"><i class="fa fa-map-marker"></i>Nigeria</a></li>
+                              </ul>
+                              <div class="recent-ads-list-price">
+                                  <i class="contactEmail"></i>support.esayestate@gmail.com
+                              </div>
+                              <!-- /.recent-ads-list-price -->
+                           </div>
+                           <!-- /.recent-ads-list-content -->
+                        </div>
+                        <!-- /.recent-ads-container -->
+                     </div>
+                  </div>
+                  <!-- content goes here -->
+                  <h3>Send A Message</h3>
+                  <form method="post" action="/common/send-msg/">
+                     {% csrf_token%}
+                     <div class="form-group  col-md-6  col-sm-6">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Your Name" id="name" name="name" required>
+                     </div>
+                     <div class="form-group  col-md-6  col-sm-6">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" placeholder="Enter email" id="mail" name="mail" required>
+                     </div>
+                     <div class="form-group  col-md-12  col-sm-12">
+                        <label>Subject</label>
+                        <input type="text" class="form-control" placeholder="Subject" id="subject" name="subject" required>
+                     </div>
+                     <div class="form-group  col-md-12  col-sm-12">
+                        <label>Message</label>
+                        <textarea placeholder="Your Message" rows="3" class="form-control" id="msg" name="msg" required></textarea>
+                     </div>
+                     <div class="col-md-12  col-sm-12"> <img src="" alt="" class="img-responsive"> </div>
+                     <div class="clearfix"></div>
+                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
+                        <button type="submit" class="btn btn-theme btn-block">Submit</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Back To Top -->
+      <a href="#0" class="cd-top">Top</a>
+      <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+      {% include 'js.html' %}
+       <script src="{% static 'js/forest-megamenu.js' %}"></script>
+      <script type="text/javascript">
+         (function($) {
+             "use strict";
+				 $('#menu-1').megaMenu({
+				 full_width          : false,
+				 links_align         : 'right'
+			 });
+         })(jQuery);
+      </script>
+      <script>
+        $( function() {
+            var cache = {};
+            var state = {};
+            $( "#lga" ).autocomplete({
+              minLength: 1,
+              source: function( request, response ) {
+                var term = request.term;
+                var nigerian_state = $('#state').val()
+                request.nigerian_state = nigerian_state
+                if ( term in cache && nigerian_state in state ) {
+                  response( cache[ term ] );
+                  return;
+                }
+
+                $.getJSON( "/agents/lga-search/", request, function( data, status, xhr ) {
+                  cache[ term ] = data;
+                  state[ nigerian_state ] = true;
+                  response( data );
+                });
+              }
+            });
+          } );
+        </script>
+      <script>
+            $( function() {
+                var cache = {};
+                $( "#state" ).autocomplete({
+                  minLength: 1,
+                  source: function( request, response ) {
+                    var term = request.term;
+                    if ( term in cache ) {
+                      response( cache[ term ] );
+                      return;
+                    }
+                  change: "_removeInvalid"
+                    $.getJSON( "/agents/state-search/", request, function( data, status, xhr ) {
+                      cache[ term ] = data;
+                      response( data );
+                    });
+                  }
+                });
+              } );
+		</script>
+      <script>
+  $(function () {
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+  })
+</script>
+   <script>
+$(".js-example-placeholder-single-type").select2({
+    placeholder: "Property Type",
+    allowClear: true,
+});
+
+$(".js-example-placeholder-single-price").select2({
+    placeholder: "Max Price",
+    allowClear: true,
+});
+</script>
+   </body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

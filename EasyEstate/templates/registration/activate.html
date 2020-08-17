@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block menu %}
+{% endblock menu %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+<section class="comming-soon-grid">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 comming-soon">
+                  <div class="theme-logo">
+                     <a href="{% url 'index' %}"><img src="images/easy1.jpg" alt=""></a>
+                  </div>
+                  <div class="count-down">
+                     <div id="clock"></div>
+                  </div>
+                  <div>
+                      <h3>Activation</h3>
+                      <p>{{ activation_key }} </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+{% endblock %}

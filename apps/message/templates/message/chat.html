@@ -1,0 +1,219 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+               	  <li><a href="index.html">Home</a></li>
+                  <li><a href="index.html">Profile</a></li>
+                  <li><a class="active" href="index.html">Inbox</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <!-- COURSE CONCERN -->
+         <section class="section-padding gray">
+            <div class="container">
+                  <div class="row">
+                   <div class="message-body">
+                     <div class="col-md-4 col-sm-5 col-xs-12">
+                        <div class="message-inbox">
+                           <div class="message-header">
+                              <h4>Inbox</h4>
+                           </div>
+                           <ul class="message-history">
+                              <!-- LIST ITEM -->
+                              <li class="message-grid">
+                                 <a href="#">
+                                    <div class="image">
+                                       <img src="images/users/1.jpg" alt="">
+                                    </div>
+                                    <div class="user-name">
+                                       <div class="author">
+                                          <span>John Doe</span><div class="user-status"></div>
+                                       </div>
+                                       <p>Xperia Z5 For Sale</p>
+                                       <div class="time">
+                                           <span>7 days ago</span>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </li>
+                              <!-- END / LIST ITEM -->
+                              <!-- LIST ITEM -->
+                              <li class="message-grid">
+                                 <a href="#">
+                                    <div class="image">
+                                       <img src="images/users/2.jpg" alt="">
+                                    </div>
+                                    <div class="user-name">
+                                       <div class="author">
+                                          <span>Alex Curt</span><div class="user-status"></div>
+                                       </div>
+                                       <p>BMW Car For Sale</p>
+                                       <div class="time">
+                                          <span>2 days ago</span>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </li>
+                              <!-- END / LIST ITEM -->
+
+                              <!-- LIST ITEM -->
+                              <li class="message-grid">
+                                 <a href="#">
+                                    <div class="image">
+                                       <img src="images/users/3.jpg" alt="">
+                                    </div>
+                                    <div class="user-name">
+                                       <div class="author">
+                                          <span>Sonu Monu</span><div class="user-status"></div>
+                                       </div>
+                                       <p>Xperia z5 for sale</p>
+                                       <div class="time">
+                                           <span>1 days ago</span>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </li>
+                              <!-- END / LIST ITEM -->
+                              <!-- LIST ITEM -->
+                              <li class="active">
+                                 <a href="#">
+                                    <div class="image">
+                                       <img src="images/users/4.jpg" alt="">
+                                    </div>
+                                    <div class="user-name">
+                                       <div class="author">
+                                          <span>Arslan Tariq</span><div class="user-status"></div>
+                                       </div>
+                                       <p>HHonda Civic 2017 Sports</p>
+                                       <div class="time">
+                                          <span>3 days ago</span>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </li>
+                              <!-- END / LIST ITEM -->
+                              <!-- LIST ITEM -->
+                              <li class="message-grid">
+                                 <a href="#">
+                                    <div class="image">
+                                       <img src="images/users/5.jpg" alt="">
+                                    </div>
+                                    <div class="user-name">
+                                       <div class="author">
+                                          <span>Alexa Grey</span><div class="user-status"></div>
+                                       </div>
+                                       <p>Pet For Sale</p>
+                                       <div class="time">
+                                          <span>1 days ago</span>
+                                       </div>
+
+                                    </div>
+                                 </a>
+                              </li>
+                              <!-- END / LIST ITEM -->
+                              <!-- LIST ITEM -->
+                              <li>
+                                 <a href="#">
+                                    <div class="image">
+                                       <img src="images/users/6.jpg" alt="">
+                                    </div>
+                                    <div class="user-name">
+                                       <div class="author">
+                                          <span>Humayun</span><div class="user-status"></div>
+                                       </div>
+                                       <p>Lcd for sale</p>
+                                       <div class="time">
+                                          <span>5 days ago</span>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </li>
+                              <!-- END / LIST ITEM -->
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-md-8 clearfix col-sm-5 col-xs-12 message-content">
+                        <div class="message-details">
+                           <div class="author" id="charts">
+                              <div class="image">
+                                 <img src="{{ user.profile.photo.url }}" alt="">
+                              </div>
+                              <span class="author-name">{{ user.username }}</span>
+                              <em>5 days ago</em>
+                           </div>
+                           <h2>Sony Xperia Z5 For Sale</h2>
+                           <ul class="messages" id="msg-list">
+                              {% for obj in chart %}
+                                  {% if obj.user in request.user.profile %}
+                                      <li class="friend-message clearfix">
+                                          <figure class="profile-picture">
+                                              <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
+                                          </figure>
+                                          <div class="message">
+                                              {{ obj.message }}
+                                              <div class="time"><i class="fa fa-clock-o"></i>{{ obj.date_created|date:"a" }}</div>
+                                          </div>
+                                      </li>
+                                  {% else %}
+                                      <li class="my-message clearfix">
+                                         <figure class="profile-picture">
+                                            <img src="{{ obj.photo.url }}" class="img-circle" alt="Profile Pic">
+                                         </figure>
+                                         <div class="message">
+                                            {{ obj.message }}
+                                            <div class="time"><i class="fa fa-clock-o"></i>{{ obj.date_created|date:"a" }}</div>
+                                         </div>
+                                      </li>
+                                  {% endif %}
+                              {% empty %}
+                                  <li class="my-message clearfix">
+                                      <figure class="profile-picture">
+                                            <img src="{{ user.profile.photo.url }}" class="img-circle" alt="Profile Pic">
+                                         </figure>
+                                      <div class="message">
+                                          No Message
+                                      </div>
+                                  </li>
+                              {% endfor %}
+                           <script>
+                               var chartlist = document.getElementByID('charts');
+                               chartlist.scrollTop = chartlist.scrollRight
+                           </script>
+                           <script src="{% static 'js/easyestate.js' %}"></script>
+                           </ul>
+                           <div class="chat-form ">
+                              <form role="form" class="form-inline" method="post" id="chartform">
+                                 {% csrf_token %}
+                                 <div class="form-group">
+                                    -msg<input style="width: 100%" placeholder="Type a message here..." class="form-control" type="text" id="chat-msg" name="chat-msg">
+                                 </div>
+                                 <button class="btn btn-theme" type="submit">Send</button>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- END / COURSE CONCERN -->
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+{% endblock %}

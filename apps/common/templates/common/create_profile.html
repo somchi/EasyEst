@@ -1,0 +1,101 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="page-header-area">
+         <div class="container">
+            <div class="row">
+                {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                {% endif %}
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>Create Your Account</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bg ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                   <div class="col-md-7 col-sm-12 col-xs-12">
+                       <div class="form-grid">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                             {{ form.photo.errors }}
+                             {{ form.photo.label }}
+                            {{ form.photo  }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.gender.errors }}
+                                {{ form.gender.label }}
+                                {{ form.gender }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.phone_number.errors }}
+                                {{ form.phone_number.label }}
+                                {{ form.phone_number }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.address.errors }}
+                                {{ form.address.label }}
+                                {{ form.address }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.country.errors }}
+                                {{ form.country.label }}
+                                {{ form.country }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.state.errors }}
+                                {{ form.state.label }}
+                                {{ form.state }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.lga.errors }}
+                                {{ form.lga.label }}
+                                {{ form.lga }}
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                 <div class="col-xs-12 col-sm-7">
+                                    <div class="skin-minimal">
+                                       <ul class="list">
+                                          <li>
+                                             {{ form.i_agree.errors }}
+                                             {{ form.i_agree }}
+                                             <label >i agree to<a href="#">Terms of Services</a></label>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                             <button class="btn btn-theme btn-lg btn-block">Create</button>
+                        </form>
+                   </div>
+                   </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+      </div>
+{% endblock %}

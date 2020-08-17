@@ -1,0 +1,531 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bgs gray ">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                   {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                   {% endif %}
+                  <!-- Middle Content Area -->
+                  <div class="col-md-8 col-xs-12 col-sm-12">
+                     <!-- Single Ad -->
+                     <div class="single-ad">
+                        <!-- Ad Slider -->
+                        <div class="">
+                           <!-- Slide -->
+                           {% if providers.service_pic %}
+                           <div class="item"><img src="{{ providers.service_pic.url }}" alt="" style="width:900px; height:450px;" ></div>
+                           <!-- Slide -->
+                           {% else %}
+                           <div class="item"><img  src="{% static 'images/alt.jpg' %}" style="width:900px; height:450px;" alt=""></div>
+                           {% endif %}
+                        </div>
+                        <!-- Short Description  -->
+                        <div class="ad-box">
+                           <div class="ad-title clearfix">
+                           </div>
+                           <div class="short-features">
+                              <!-- Heading Area -->
+                              <div class="heading-panel">
+                                 <h3 class="main-title text-left">
+                                    Provider's Details
+                                 </h3>
+                              </div>
+                           </div>
+                           <!-- Short Features  -->
+                           <div class="desc-points">
+                              <h3>Major Experience</h3>
+                              <p>{{ providers.major_experience }}</p>
+                           </div>
+                           <!-- Related Image  -->
+                           <div class="ad-related-img">
+                              <img src="images/asrock-diagram.jpg" alt="" class="img-responsive center-block">
+                           </div>
+                           <!-- Ad Specifications -->
+                           <div class="specification">
+                              <!-- Heading Area -->
+                              <div class="desc-points">
+                                 <h3>
+                                    Major Job Done
+                                 </h3>
+                                 <p>
+                                 {{ providers.major_jobs_done }}
+                              </p>
+                              </div>
+                           </div>
+                           <div class="clearfix"></div>
+                           <!-- Heading Area -->
+                           <div class="clearfix"></div>
+                        </div>
+                        <!-- Share Ad  -->
+                        <div class="ad-share text-center">
+                           <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">
+                              <i class="fa fa-share-alt"></i> <span class="hidetext">Share</span>
+                           </div>
+                           <a class="ad-box col-md-4 col-sm-4 col-xs-12" href="#"><i class="fa fa-star active"></i> <span class="hidetext">Add to watchlist</span></a>
+                           <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">
+                              <i class="fa fa-warning"></i> <span class="hidetext">Report</span>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- Price Alert -->
+                        <!-- Price Alert End -->
+                        <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+                        <div class="grid-panel margin-top-30">
+                           <div class="heading-panel">
+                              <div class="col-xs-12 col-md-12 col-sm-12">
+                                 <h3 class="main-title text-left">
+                                    Featured Properties
+                                 </h3>
+                              </div>
+                           </div>
+                           <!-- Ads Archive -->
+                           {% for p in featured %}
+                              <div class="posts-masonry">
+                           <div class="col-md-12 col-xs-12 col-sm-12">
+                              <!-- Ads Listing -->
+                              <div class="ads-list-archive">
+                                 <!-- Image Block -->
+                                 <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                    <!-- Img Block -->
+                                    <div class="ad-archive-img">
+                                       <a href="#">
+                                          <div class="ribbon popular"></div>
+                                          <img class="img-responsive" src="{{ p.property.main_view.url }}" alt="">
+                                       </a>
+                                    </div>
+                                    <!-- Img Block -->
+                                 </div>
+                                 <!-- Ads Listing -->
+                                 <div class="clearfix visible-xs-block"></div>
+                                 <!-- Content Block -->
+                                 <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                    <!-- Ad Desc -->
+                                    <div class="ad-archive-desc">
+                                       <!-- Price -->
+                                       <div class="ad-price">₦{{ p.property.price }}</div>
+                                       <!-- Title -->
+                                       <h3>{{ p.property.number_of_room }} {% if p %}Room {% endif %}{{ p.property.property_type}}  for {{ p.property.availability_type}}</h3>
+                                       <!-- Category -->
+                                       <div class="category-title"> <span><a href="#">{{ p.property.property_lga }} {{ p.property.property_state }}</a></span> </div>
+                                       <!-- Short Description -->
+                                       <div class="clearfix visible-xs-block"></div>
+                                       <p class="hidden-sm">{{ p.property.description|slice:'50'}}</p>
+                                       <!-- Ad Features -->
+                                       <ul class="add_info">
+                                          <!-- Contact Details -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Call Timings</h4>
+                                                   <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
+                                                   <br> <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                                   <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Address -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Address</h4>
+                                                   {{ p.property.property_lga }} {{ p.property.property_state }}
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                                <div class="tooltip-content"> <strong>Category</strong> <span class="label label-danger">{{ p.property.property_type }}</span> </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
+                                                <div class="tooltip-content"> <strong>Warrinty</strong> <span class="label label-danger">{{ p.property.availability_type }} </span> </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                       <!-- Ad History -->
+                                       <div class="clearfix archive-history">
+                                          <div class="last-updated">{{ p.date_created }}</div>
+                                          <div class="ad-meta"> <a class="btn btn-success" href="{%  url 'agents:property_detail' p.property.pk %}"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                       </div>
+                                    </div>
+                                    <!-- Ad Desc End -->
+                                 </div>
+                                 <!-- Content Block End -->
+                              </div>
+                           </div>
+                        </div>
+                           {% empty %}
+                              <h3><em>No featured Property</em></h3>
+                           {% endfor %}
+                        </div>
+                        <!-- =-=-=-=-=-=-= Latest Ads End =-=-=-=-=-=-= -->
+
+                        <!-- =-=-=-=-=-=-= Comments Section =-=-=-=-=-=-= -->
+                        <!-- =-=-=-=-=-=-= Comments Section End =-=-=-=-=-=-= -->
+                     </div>
+                     <!-- Single Ad End -->
+                  </div>
+                  <!-- Right Sidebar -->
+                  <div class="col-md-4 col-xs-12 col-sm-12">
+                     <!-- Sidebar Widgets -->
+                     <div class="sidebar">
+                        <!-- Contact info -->
+                        <div class="contact white-bg">
+                           <!-- Email Button trigger modal -->
+                            <button class="btn-block btn-contact contactEmail" {% if user.is_authenticated %}
+                                   data-toggle="modal" data-target="#modal"
+                                    {% else %}
+                                    onclick="window.location.href='/accounts/login/?next={{request.path}}'"
+                                    {% endif %}>Contact Provider
+                            </button>
+                            <!-- Email Modal -->
+                           <button class="btn-block btn-contact contactPhone number" {%if user.is_authenticated %}
+                                   data-last="{{ providers.provider.phone_number|slice:'3:' }}"
+                                   {% else %}
+                                    onclick="window.location.href='/accounts/login/?next={{request.path}}'" {% endif %} >{{ providers.provider.phone_number|slice:":3" }}<span>XXXXXXX</span>
+                           </button>
+                        </div>
+                        <div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true" id="modal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                          <h3 class="modal-title" id="lineModalLabel">Email Provider</h3>
+                                       </div>
+                                        <div class="modal-body">
+                                            <div class="recent-ads">
+                                                <div class="recent-ads-list">
+                                                    <div class="recent-ads-container">
+                                                       <div class="recent-ads-list-image">
+                                                          <a href="#" class="recent-ads-list-image-inner">
+                                                              {% if providers.provider.photo %}
+                                                                  <img class="image" alt="img" src="{{ providers.provider.photo.url }}" style="width:80px; height:80px;">
+                                                                    {% elif 'M' in user.profile.gender %}
+                                                                        <img src="{% static 'images/male-avatar.jpg' %}" alt="" style="width:80px; height:80px;">
+                                                                    {% else %}
+                                                                        <img src="{% static 'images/female-avatar.png' %}" alt="" style="width:80px; height:80px;">
+                                                              {% endif %}
+                                                          </a><!-- /.recent-ads-list-image-inner -->
+                                                       </div>
+                                                       <!-- /.recent-ads-list-image -->
+                                                       <div class="recent-ads-list-content">
+                                                          <h3 class="recent-ads-list-title">
+                                                             <a href="">Category <span>:</span> {{ providers.service_provided }}</a>
+                                                          </h3>
+                                                          <ul class="recent-ads-list-location">
+                                                             <li><a href="#">Provider Name <span> :</span>{{ providers.full_name }} </a></li>
+                                                          </ul>
+                                                          <div class="recent-ads-list-price">
+                                                             ₦{{ providers.starting_at }}
+                                                          </div>
+                                                          <!-- /.recent-ads-list-price -->
+                                                       </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <form id="emai-form" method='post' class="form" role="form" action="/message/art5e3{{ object.providers.pk }}e4th5/message-provider/">
+                                                <div class="modal-body">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            <label>Full Name:</label>
+                                                            <input type="text" class="form-control" placeholder="Full Name" id="full_name" name="full_name" required>
+                                                        </div>
+                                                        <div class="form-group  col-md-6  col-sm-6">
+                                                            {{ form.sender.errors }}
+                                                            <label>Phone Number</label>
+                                                            <input type="tel" class="form-control" placeholder="Phone Number" id="phone" name="phone" required>
+                                                        </div>
+                                                         <div class="form-group  col-md-12  col-sm-12">
+                                                            {{ form.subject.errors }}
+                                                            <label>Email subject:</label>
+                                                            <input type="text" class="form-control" placeholder="Email Subject" id="email_subject" name="email_subject" required>
+                                                        </div>
+                                                        <div class="form-group  col-md-12  col-sm-12">
+                                                            {{ form.message.errors }}
+                                                            <label>Your message:</label>
+                                                            <input type="text" class="form-control" placeholder="Your Message" id="message" name="message" required>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                     <div class="clearfix"></div>
+                                                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
+                                                        <button type="submit" class="btn btn-theme btn-block">Send Email</button>
+                                                     </div>
+                                              </div>
+                                            </form>
+                                        </div><!-- /.modal-content -->
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Price info block -->
+                        <div class="ad-listing-price">
+                           <p><span>₦{{ providers.starting_at }}</span></p>
+                        </div>
+                        <!-- User Info -->
+                        <div class="white-bg user-contact-info">
+                           <div class="user-info-card">
+                              <div class="user-photo col-md-4 col-sm-3  col-xs-4">
+                                 {% if providers.provider.photo %}
+                                    <img class="image" alt="img" src="{{ providers.provider.photo.url }}">
+                                 {% elif 'M' in providers.provider.gender %}
+                                    <img src="{% static 'images/male-avatar.jpg' %}" alt="">
+                                 {% else %}
+                                    <img src="{% static 'images/female-avatar.png' %}" alt="" style="">
+                                 {% endif %}
+                              </div>
+                              <div class="user-information no-padding col-md-8 col-sm-9 col-xs-8">
+                                 <span class="user-name"><a class="hover-color" href="profile.html">{{ providers.full_name }}</a></span>
+                                 <div class="item-date">
+                                    <span class="ad-pub">Member since: {{ providers.provider.user.date_joined|date:"M Y" }}</span><br>
+                                    <span class="ad-pub">Providing service since: {{ providers.since|date:"D d M Y" }}</span><br>
+                                 </div>
+                              </div>
+                              <div class="clearfix"></div>
+                           </div>
+                           <div class="ad-listing-meta">
+                              <ul>
+                                 <li>Categories: <span class="color">{{ providers.service_provided }}</span></li>
+                                 <li>Address: <span class="color">{{ providers.provider.lga }}</span></li>
+                                 <li>Location: <span class="color">{{ providers.provider.state }}, {{ providers.provider.country }}</span></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- Trainings and Cert -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Training(s) and Certification(s)</a></h4>
+                           </div>
+                           {% if providers.providerbuild_set.all %}
+                           <div class="widget-content">
+                              <div class="featured-slider-3">
+                                 <!-- Featured Ads -->
+                                {% for providerbuild in providers.providerbuild_set.all %}
+                                 <div class="item">
+                                    <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                       <!-- Ad Box -->
+                                       <div class="category-grid-box">
+                                          <!-- Ad Img -->
+                                          <div class="category-grid-img">
+                                             <img class="img-responsive" alt="" src="{{ providerbuild.cert_evidence.url }}">
+                                             <!-- Ad Status -->
+                                             <!-- User Review -->
+                                             <div class="user-preview">
+                                                <a href="#"> <img src="{{ object.photo.url }}" class="avatar avatar-small" alt=""> </a>
+                                             </div>
+                                             <!-- View Details --><a href="" class="view-details">View Details</a>
+                                          </div>
+                                          <!-- Ad Img End -->
+                                          <div class="short-description">
+                                             <!-- Ad Category -->
+                                             <div class="category-title"> <span><a href="#">Issued:{{ providerbuild.date_acquired }}</a></span> </div>
+                                             <!-- Ad Title -->
+                                             <h3><a title="" href="single-page-listing.html">{{ providerbuild.certificate_name }} Certification</a></h3>
+                                             <!-- Price -->
+                                             <div class="price">Issued By:{{ providerbuild.issuer }}<span class="negotiable"></span></div>
+                                          </div>
+                                          <!-- Addition Info -->
+                                       </div>
+
+                                       <!-- Ad Box End -->
+                                    </div>
+                                 </div>
+                                {% endfor %}
+                              </div>
+                           </div>
+                           {% endif %}
+                        </div>
+                        <!-- Recommended Providerss -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Recommendations in {{ providers.service_provided }}</a></h4>
+                           </div>
+                           {% if t %}
+                           <div class="widget-content recent-ads">
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-1.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Sony Xperia Z1</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 17,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-2.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">2017 BMW i8</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 66,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-3.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Dell Latitude e7440</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 37,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-4.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Sport Stylish Steering</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 11,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                              <!-- Ads -->
+                              <div class="recent-ads-list">
+                                 <div class="recent-ads-container">
+                                    <div class="recent-ads-list-image">
+                                       <a href="#" class="recent-ads-list-image-inner">
+                                       <img src="images/posting/thumb-5.jpg" alt="">
+                                       </a><!-- /.recent-ads-list-image-inner -->
+                                    </div>
+                                    <!-- /.recent-ads-list-image -->
+                                    <div class="recent-ads-list-content">
+                                       <h3 class="recent-ads-list-title">
+                                          <a href="#">Apple Wrist Watches</a>
+                                       </h3>
+                                       <ul class="recent-ads-list-location">
+                                          <li><a href="#">New York</a>,</li>
+                                          <li><a href="#">Brooklyn</a></li>
+                                       </ul>
+                                       <div class="recent-ads-list-price">
+                                          $ 20,000
+                                       </div>
+                                       <!-- /.recent-ads-list-price -->
+                                    </div>
+                                    <!-- /.recent-ads-list-content -->
+                                 </div>
+                                 <!-- /.recent-ads-container -->
+                              </div>
+                           </div>
+                           {% endif %}
+                        </div>
+                        <!-- Saftey Tips  -->
+                        <div class="widget">
+                           <div class="widget-heading">
+                              <h4 class="panel-title"><a>Safety tips for deal</a></h4>
+                           </div>
+                           <div class="widget-content saftey">
+                              <ol>
+                                 <li>Use a safe location to meet seller</li>
+                                 <li>Avoid cash transactions</li>
+                                 <li>Beware of unrealistic offers</li>
+                              </ol>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Sidebar Widgets End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block menu %}
+{% endblock menu %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+<section class="comming-soon-grid">
+         <div class="container">
+            <div class="row">
+                {% if messages %}
+                   {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <p>{{ message }}</p>
+                        </div>
+                   {% endfor %}
+                {% endif %}
+               <div class="col-xs-12 comming-soon">
+                  <div class="theme-logo">
+                     <a href="index.html"><img src="{% static 'images/easy.jpg' %}" alt=""></a>
+                  </div>
+                  <div class="count-down">
+                     <div id="clock"></div>
+                  </div>
+                  <div>
+                      <h3>Confirm Delete</h3>
+                     <form action="" method="post">
+                         {% csrf_token%}
+                            <p>Are your sure you want to delete <em><b>"{{ object.job_title }}"</b></em></p>
+                            <input type="submit" value="Confirm" class="btn btn-success">
+                            <a href="{{ object.get_absolute_url }}" class="btn btn-warning">Cancel</a>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+{% block footer%}
+{% endblock %}
+{% endblock %}

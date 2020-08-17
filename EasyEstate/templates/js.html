@@ -1,0 +1,134 @@
+{% load staticfiles %}
+      <script src="{% static 'js/modernizr.js' %}"></script>
+      <script src="{% static 'js/easyestate.js' %}"></script>
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+      <!-- Bootstrap Core Css  -->
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <!-- Jquery Easing -->
+      <script src="{% static 'js/easing.js' %}"></script>
+      <!-- Menu Hover  -->
+      <script async src="{% static 'js/forest-megamenu.js' %}"></script>
+      <!-- Jquery Appear Plugin -->
+      <script async src="{% static 'js/jquery.appear.min.js' %}"></script>
+      <!-- Numbers Animation   -->
+      <script async src="{% static 'js/jquery.countTo.js' %}"></script>
+      <!-- Jquery Smooth Scroll  -->
+      <script async src="{% static 'js/jquery.smoothscroll.js' %}"></script>
+      <!-- Jquery Select Options  -->
+      <script async src="{% static 'js/select2.min.js' %}"></script>
+      <!-- noUiSlider -->
+      <script async src="j{% static 'js/nouislider.all.min.js' %}"></script>
+      <!-- Carousel Slider  -->
+      <script async src="{% static 'js/carousel.min.js' %}"></script>
+      <script src="{% static 'js/slide.js' %}"></script>
+      <!-- Image Loaded  -->
+      <script async src="{% static 'js/imagesloaded.js' %}"></script>
+      <script async src="{% static 'js/isotope.min.js' %}"></script>
+      <!-- CheckBoxes  -->
+      <script async src="{% static 'js/icheck.min.js' %}"></script>
+      <!-- Jquery Migration  -->
+      <script async src="{% static 'js/jquery-migrate.min.js' %}"></script>
+      <!-- Sticky Bar  -->
+      <script async src="{% static 'js/theia-sticky-sidebar.js' %}"></script>
+      <!-- Style Switcher -->
+      <script async src="{% static 'js/color-switcher.js' %}"></script>
+      <!-- Template Core JS -->
+      <script async src="{% static 'js/custom.js' %}"></script>
+      <script async src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+ <!-- For this Page Only -->
+      <!-- Ckeditor  -->
+      <script async src="{% static 'js/ckeditor/ckeditor.js' %}" ></script>
+      <!-- Ad Tags  -->
+      <script async src="{% static 'js/jquery.tagsinput.min.js' %}"></script>
+      <!-- DROPZONE JS  -->
+      <script async src="{% static 'js/dropzone.js' %}" ></script>
+      <script async src="{% static 'js/form-dropzone.js' %}" ></script>
+      <!--<script src="{% static 'js/paystack.js' %}" ></script>-->
+      <script type="text/javascript">
+         (function($) {
+             "use strict";
+				 $('#menu-1').megaMenu({
+				 full_width          : false,
+				 links_align         : 'right'
+			 });
+         })(jQuery);
+      </script>
+
+      <script type="text/javascript">
+	   "use strict";
+
+	   /*--------- Textarea Ck Editor --------*/
+	     CKEDITOR.replace( 'editor1' );
+
+	   /*--------- Ad Tags --------*/
+		 $('#tags').tagsInput({
+   			'width':'100%'
+		 });
+
+         /*--------- create remove function in dropzone --------*/
+         Dropzone.autoDiscover = false;
+         var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
+         var fileList = new Array;
+         var i = 0;
+         $("#dropzone").dropzone({
+           addRemoveLinks: true,
+           maxFiles: 5, //change limit as per your requirements
+         acceptedFiles: '.jpeg,.jpg,.png,.gif',
+           dictMaxFilesExceeded: "Maximum upload limit reached",
+           acceptedFiles: acceptedFileTypes,
+         url: "uploads",
+           dictInvalidFileType: "upload only JPG/PNG",
+           init: function () {
+               // Hack: Add the dropzone class to the element
+               $(this.element).addClass("dropzone");
+           }
+         });
+		 (jQuery);
+</script>
+
+      <script type="text/javascript">
+         (function($) {
+          	"use strict";
+         /* ======= Show Number ======= */
+               $('.number').click(function() {
+               	$(this).find('span').text( $(this).data('last') );
+               });
+
+         /* ======= Ad Location ======= */
+         	   var  map ="";
+               var latlng = new google.maps.LatLng(47.550259, -122.264847);
+               var myOptions = {
+                   zoom: 13,
+                   center: latlng,
+         		   scrollwheel: false,
+                   mapTypeId: google.maps.MapTypeId.ROADMAP,
+                   size: new google.maps.Size(480,240)
+               }
+               map = new google.maps.Map(document.getElementById("itemMap"), myOptions);
+               var marker = new google.maps.Marker({
+                   map: map,
+                   position: latlng
+               });
+           /* ======= Ad Detail On Scroll ======= */
+         //caches a jQuery object containing the header element
+         var header = $(".sticky-ad-detail");
+         $(window).scroll(function() {
+			 var scroll = $(window).scrollTop();
+				 if (scroll >= 500) {
+					header.addClass("show-sticky-ad-detail");
+				 } else {
+					header.removeClass("show-sticky-ad-detail");
+				 }
+			 });
+         })(jQuery);
+      </script>
+
+<script>
+  $(function () {
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+  })
+</script>

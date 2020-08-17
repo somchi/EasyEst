@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+<div class="page-header-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>Create Your Request</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+<div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service</a></li>
+                  <li><a class="active" href="">Custom Service Request</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+<div class="main-content-area clearfix">
+    <section class="section-padding error-page pattern-bg ">
+        <div class="container">
+            <div class="col-lg-12 connectedSortable">
+                <ul class="nav nav-tabs" role="tablist">
+                      <li class="col-lg-4 col-xs-6 active"><a href="#tab1" role="tab" data-toggle="tab">All Messages</a></li>
+                      <li class="col-lg-4 col-xs-6"><a href="#tab2" role="tab" data-toggle="tab">Unread Messages</a></li>
+                      <li class="col-lg-4 col-xs-6"><a href="#tab3" role="tab" data-toggle="tab">Sent Messages</a></li>
+                </ul>
+        <!-- TAB CONTENT -->
+            <div class="tab-content">
+                <div class="active tab-pane fade in" id="tab1">
+                   {% for messageprovider in object.messageprovider_set.all %}
+                    <a href="">
+                        <div class="user-name">
+                            <div class="author">
+                                <img src="{{ messageprovider.sender.photo.url }}" alt="" style="height:3em; width:3em;" class="img-circle"><span>{{ messageprovider.sender_name }}</span><div class="user-status"></div>
+                            </div>
+                            <p style="text-indent:3em;">{{ messageprovider.message }}</p>
+                            <div class="time">
+                                <p style="text-indent:3em;">sent:{{ messageprovider.date_created|date:'D d M Y' }}</p>
+                            </div>
+                        </div>
+                    </a>
+                   {% endfor %}
+                  </div>
+                <div class="tab-pane fade" id="tab2">
+                    {% for messageprovider in object.messageprovider_set.all %}
+                    {% if messageprovider.read == False %}
+                    <a href="#">
+                        <div class="user-name">
+                            <div class="author">
+                                <img src="{{ messageprovider.sender.photo.url }}" alt="" style="height:3em; width:3em;" class="img-circle"><span>{{ messageprovider.sender_name }}</span><div class="user-status"></div>
+                            </div>
+                            <p style="text-indent:3em;">{{ messageprovider.message }}</p>
+                            <div class="time">
+                                <p style="text-indent:3em;">sent:{{ messageprovider.date_created|date:'D d M Y' }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
+                <div class="tab-pane fade" id="tab3">
+                    {% for messageprovider in object.messageprovider_set.all %}
+                    <a href="#">
+                        <div class="user-name">
+                            <div class="author">
+                                <img src="{{ messageprovider.sender.photo.url }}" alt="" style="height:3em; width:3em;" class="img-circle"><span>{{ messageprovider.sender_name }}</span><div class="user-status"></div>
+                            </div>
+                            <p style="text-indent:3em;">{{ messageprovider.message }}</p>
+                            <div class="time">
+                                <p style="text-indent:3em;">sent:{{ messageprovider.date_created|date:'D d M Y' }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                  </div>
+            </div>
+    </div>
+    </div>
+</section>
+</div>
+
+{% endblock %}

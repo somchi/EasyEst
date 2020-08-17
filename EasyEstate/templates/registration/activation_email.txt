@@ -1,0 +1,17 @@
+Dear {{ user.email }},
+
+Welcome to EasyEstate, convenient platform design for you to solve real estate challenges.
+You can be sure to find the right properties that suit's you and at the same time find the right house service providers that will step up your crib.
+
+We are really glad you have join us and cannot wait to help you with your real estate setbacks.
+
+To get started Please click on the link to confirm your registration or copy the link to a browser,
+{{ site }}/accounts/activate/{{ activation_key }}
+
+-------------------------------
+This link expires after 24 hour.
+-------------------------------
+
+----------------------------
+Welcome to easyhousing.com.ng
+----------------------------

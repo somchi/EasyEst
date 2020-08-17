@@ -1,0 +1,212 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a class="active" href="#">My Ads </a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+      <div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding gray">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Middle Content Area -->
+                  <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
+                     <!-- Sidebar Widgets -->
+                     <div class="user-profile">
+                        <a href="profile.html"><img src="images/users/9.jpg" alt=""></a>
+                        <div class="profile-detail">
+                           <h6>{{ user.username }}</h6>
+                           <ul class="contact-details">
+                              <li>
+                                 <i class="fa fa-map-marker"></i> {{ object.address }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-envelope"></i>{{ user.email }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-phone"></i> {{ object.phone_number }}
+                              </li>
+                           </ul>
+                        </div>
+                        <ul>
+                           <li ><a href="{% url 'common:profile' object.pk %}">Profile</a></li>
+                           <li  class="active"><a href="{% url 'agents:property_upload' object.pk %}">Add a Property</a></li>
+                           <li><a href="{% url 'agents:user_properties' object.pk %}">My Properties <span class="badge"></span></a></li>
+                           <li><a href="">Running Ads</a></li>
+                            <li><a href="">My Service</a></li>
+                           <li ><a href="">Messages</a></li>
+                           <li><a href="/account/logout">Logout</a></li>
+                        </ul>
+                     </div>
+                     <!-- Categories -->
+                     <div class="widget">
+                        <div class="widget-heading">
+                           <h4 class="panel-title"><a>Change Your Plan</a></h4>
+                        </div>
+                        <div class="widget-content">
+                           <select class=" form-control">
+                              <option label="Select Option"></option>
+                              <option value="0">Free</option>
+                              <option value="1">Premium</option>
+                              <option value="2">Featured</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-8 col-sm-12 col-xs-12">
+                     <!-- Row -->
+                     <div class="row">
+                        <!-- Sorting Filters -->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                           <!-- Sorting Filters Breadcrumb -->
+                           <!-- Sorting Filters Breadcrumb End -->
+                        </div>
+                        <!-- Sorting Filters End-->
+                        <div class="clearfix"></div>
+                        <!-- Ads Archive -->
+                        <div class="posts-masonry">
+                           <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
+                               {% for propertyupload in object.propertyupload_set.all %}
+                              <!-- Ads Listing -->
+                              <div class="ads-list-archive">
+                                 <!-- Image Block -->
+                                 <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                    <!-- Img Block -->
+                                    <div class="ad-archive-img ">
+                                       <a href="#">
+                                      <div class="ribbon expired">{{ propertyupload.running }}</div>
+                                       <img src="{{ propertyupload.main_view.url }}" alt="">
+                                       </a>
+                                       <div class="sold">
+                                          <img class="img-responsive" src="{% static 'images/sold.png' %}" alt="">
+                                       </div>
+                                    </div>
+                                    <!-- Img Block -->
+                                 </div>
+                                 <!-- Ads Listing -->
+                                 <div class="clearfix visible-xs-block"></div>
+                                 <!-- Content Block -->
+                                 <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                    <!-- Ad Desc -->
+                                    <div class="ad-archive-desc">
+                                       <!-- Price -->
+                                       <div class="ad-price">N{{ propertyupload.price }}</div>
+                                       <!-- Title -->
+                                       <h3>{{ propertyupload.number_of_room }} bedroom {{ propertyupload.property_type }}</h3>
+                                       <!-- Category -->
+                                       <div class="category-title"> <span><a href="#">{{ propertyupload.property_type }}</a></span> </div>
+                                       <!-- Short Description -->
+                                       <div class="clearfix visible-xs-block"></div>
+                                       <p class="hidden-sm">{{ propertyupload.description }}</p>
+                                       <!-- Ad Features -->
+                                       <ul class="add_info">
+                                          <!-- Contact Details -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Call Timings</h4>
+                                                   <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
+                                                   <br>
+                                                   <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                                   <br>
+                                                   <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Address -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                                <div class="tooltip-content">
+                                                   <h4>Address</h4>
+                                                  {{ propertyupload.property_lga }} in {{ propertyupload.property_state }}
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                                <div class="tooltip-content">
+                                                   <strong>Condition</strong> <span class="label label-danger">Used</span>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <!-- Ad Type -->
+                                          <li>
+                                             <div class="custom-tooltip tooltip-effect-4">
+                                                <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
+                                                <div class="tooltip-content">
+                                                   <strong>Warrinty</strong> <span class="label label-danger">No </span>
+                                                </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                       <!-- Ad History -->
+                                       <div class="clearfix archive-history">
+                                          <div class="last-updated">Created: {{ propertyupload.date_created }} <br> Expires: {{ propertyupload.date_expire }}</div>
+
+                                          <div class="ad-meta">
+                                             <a class="btn btn-success" href="{% url 'agents:edit_property' propertyupload.pk %}"><i class="fa fa-pencil"></i> Edit</a>
+                                             <a class="btn btn-danger" href="{% url 'agents:delete' propertyupload.pk %}"><i class="fa fa-times"></i> Delete</a>
+                                              <a class="btn btn-default" href="{% url 'agents:promote_property' propertyupload.pk %}"><i class="fa fa-plus"></i> Promote</a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!-- Ad Desc End -->
+                                 </div>
+                                 <!-- Content Block End -->
+                              </div>
+                              <!-- Ads Listing -->
+                              {% empty %}
+                                <h3>You have no Running Property Ad</h3>
+                               {% endfor %}
+                           </div>
+                        </div>
+                        <!-- Ads Archive End -->
+                        <div class="clearfix"></div>
+                        <!-- Pagination -->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                           <ul class="pagination pagination-lg">
+                              <li> <a href="#"> <i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+                              <li> <a href="#">1</a> </li>
+                              <li class="active"> <a href="#">2</a> </li>
+                              <li> <a href="#">3</a> </li>
+                              <li> <a href="#">4</a> </li>
+                              <li><a href="#"> <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+                           </ul>
+                        </div>
+                        <!-- Pagination End -->
+                     </div>
+                     <!-- Row End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+{% endblock %}

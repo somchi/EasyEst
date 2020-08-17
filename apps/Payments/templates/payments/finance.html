@@ -1,0 +1,342 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block loader %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block hero %}
+{% endblock %}
+{% block content %}
+<div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'common:profile' user.profile.pk %}">Profile</a></li>
+                  <li><a href="{% url 'service:manage_service' user.profile.pk %}">Manage Service</a></li>
+                  <li><a class="active" href="#">Create Service Profile </a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
+<div class="main-content-area clearfix">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding gray">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                   {% for message in messages %}
+                        <div class="alert alert-success">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% endfor %}
+                  <!-- Middle Content Area -->
+                  <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
+                     <!-- Sidebar Widgets -->
+                     <div class="user-profile connectedSortable">
+                        <a href="profile.html"><img src="images/users/9.jpg" alt=""></a>
+                        <div class="profile-detail">
+                           <h6>{{ user.username }}</h6>
+                           <ul class="contact-details">
+                              <li>
+                                 <i class="fa fa-map-marker"></i> {{ payee.address }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-envelope"></i>{{ user.email }}
+                              </li>
+                              <li>
+                                 <i class="fa fa-phone"></i> {{ payee.phone_number }}
+                              </li>
+                           </ul>
+                        </div>
+                        <ul>
+                           <li ><a href="{% url 'common:profile' payee.pk %}">Profile</a></li>
+                           <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Finance<span class="badge"></span></a></li>
+                           <li><a href="#tab2" role="tab" data-toggle="tab">Fund Account</a></li>
+                            <li><a href="#tab3" role="tab" data-toggle="tab">Earning<span class="badge">{{ jobs }}</span></a></li>
+                           <li><a href="#tab4" role="tab" data-toggle="tab">Expenditure<span class="badge">{{ properties }}</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- Categories -->
+                  </div>
+                  <div class="col-md-8 col-sm-12 col-xs-12">
+                     <!-- Row -->
+                     <div class="row">
+                        <div class="clearfix"></div>
+                        <!-- Ads Archive -->
+                        <div class="tab-content">
+                            <div class="posts-masonry active tab-pane fade in" id="tab1">
+                               <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
+                                   {% for requestservices in object.requestservices_set.all %}
+                                  <!-- Ads Listing -->
+                                  <div class="ads-list-archive">
+                                     <!-- Image Block -->
+                                     <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                        <!-- Img Block -->
+                                        <div class="ad-archive-img ">
+                                           <a href="#">
+                                           <img src="{{ propertyupload.main_view.url }}" alt="">
+                                           </a>
+                                           <div class="sold">
+                                              <img class="img-responsive" src="{% static 'images/sold.png' %}" alt="">
+                                           </div>
+                                        </div>
+                                        <!-- Img Block -->
+                                     </div>
+                                     <!-- Ads Listing -->
+                                     <div class="clearfix visible-xs-block"></div>
+                                     <!-- Content Block -->
+                                     <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                        <!-- Ad Desc -->
+                                        <div class="ad-archive-desc">
+                                           <!-- Price -->
+                                           <div class="ad-price">N{{ requestservices.price_from }} to N{{ requestservices.price_to }}</div>
+                                           <!-- Title -->
+                                           <h3>Service Type: {{ requestservices.type_of_service }} </h3>
+                                           <!-- Category -->
+                                           <div class="category-title"> <span><a href="#">Duration: {{ requestservices.duration }}</a></span> </div>
+                                           <!-- Short Description -->
+                                           <div class="clearfix visible-xs-block"></div>
+                                           <p class="hidden-sm">{{ requestservices.job_title }}</p>
+                                           <!-- Ad Features -->
+                                           <ul class="add_info">
+                                              <!-- Contact Details -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <h4>Call Timings</h4>
+                                                       <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
+                                                       <br>
+                                                       <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                                       <br>
+                                                       <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                              <!-- Address -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <h4>Address</h4>
+                                                      {{ propertyupload.property_lga }} in {{ propertyupload.property_state }}
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                              <!-- Ad Type -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <strong>Condition</strong> <span class="label label-danger">Used</span>
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                              <!-- Ad Type -->
+                                              <li>
+                                                 <div class="custom-tooltip tooltip-effect-4">
+                                                    <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
+                                                    <div class="tooltip-content">
+                                                       <strong>Warrinty</strong> <span class="label label-danger">No </span>
+                                                    </div>
+                                                 </div>
+                                              </li>
+                                           </ul>
+                                           <!-- Ad History -->
+                                           <div class="clearfix archive-history">
+                                              <div class="last-updated">Created: {{ requestservices.date_created }}</div>
+                                              <div class="ad-meta">
+                                                  <form method="post" action="" class="ad-meta">
+                                                  {% csrf_token %}
+                                                 <a class="btn btn-danger"  href="{% url 'service:delete' requestservices.pk %}"><i class="fa fa-times"></i> Delete</a>
+                                              </form>
+                                              <form method="post" action="" class="ad-meta">
+                                                 <a href="{% url 'service:edit_requests' requestservices.pk %}" class="btn btn-success"><i class="fa fa-pencil"></i> Edit</a>
+                                              </form>
+                                              <form class="ad-meta">
+                                                  <a class="btn btn-default"><i class="fa fa-plus"></i> Promote</a>
+                                              </form>
+                                              </div>
+                                           </div>
+                                        </div>
+                                        <!-- Ad Desc End -->
+                                     </div>
+                                     <!-- Content Block End -->
+                                  </div>
+                                  <!-- Ads Listing -->
+                                   {% endfor %}
+                               </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab2">
+                                <!-- TAB NAVIGATION -->
+                                <div class="count-down">
+                                    <div id="clock"></div>
+                                </div>
+                                <div>
+                                  <h3>Fund Your Account</h3>
+                                   {% for message in messages %}
+                                        <div class="alert alert-success">
+                                            <p>{{ message }}</p>
+                                        </div>
+                                    {% endfor %}
+                                  <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <script type="text/javascript" src="{% static 'js/paystack.js' %}"></script>
+                                        <script src="https://js.paystack.co/v1/inline.js"></script>
+                                            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-6">
+                                                <input type="number" id="amount" class="form-control" placeholder="Enter Amount">
+                                                <button type="button" onclick="payWithPaystack()"> Pay </button>
+                                            </div>
+                                  </form>
+                                    <script>
+                                        var customer_email = '{{ user.email }}';
+                                        var phone_number = '{{ object.phone }}';
+                                        var user_id = {{ user.id }};
+                                        var form = document.getElementById('pay');
+                                        var amount = form.elements.amount.value;
+                                    </script>
+                            </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab3">
+                                <!-- TAB NAVIGATION -->
+                                <div class="funfacts custom-padding parallex">
+                                    <div class="container">
+                                   <div class="row">
+                                      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                         <div class="number">N{{ payee.providerincome.new_balance }}<span class="timer" data-from="0" data-to="{{ payee.providerincome.new_balance }}" data-speed="1500" data-refresh-interval="5">0</span></div>
+                                         <h4>Net <span>Icome</span></h4>
+                                      </div>
+                                      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                         <div class="number">N<span class="timer" data-from="0" data-to="820" data-speed="1500" data-refresh-interval="5">0</span></div>
+                                         <h4>With<span>drawn</span></h4>
+                                      </div>
+                                      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                         <div class="number">N<span class="timer" data-from="0" data-to="1042" data-speed="1500" data-refresh-interval="5">0</span></div>
+                                         <h4>Un<span>cleared</span></h4>
+                                      </div>
+                                      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                         <div class="number">N<span class="timer" data-from="0" data-to="34" data-speed="1500" data-refresh-interval="5">0</span></div>
+                                         <h4>Clea<span>red</span></h4>
+                                      </div>
+                                   </div>
+                                   <!-- /.row -->
+                                </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab4">
+                                <!-- TAB NAVIGATION -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="active"><a href="#tab5" role="tab" data-toggle="tab">Active</a></li>
+                                    <li><a href="#tab6" role="tab" data-toggle="tab">Completed</a></li>
+                                    <li><a href="#tab7" role="tab" data-toggle="tab">Cancelled</a></li>
+                                    <li><a href="#tab8" role="tab" data-toggle="tab">Starred</a></li>
+                                </ul>
+                                <!-- TAB CONTENT -->
+                                <div class="tab-content">
+                                    <div class="active tab-pane fade in" id="tab5">
+                                        <h2>Active</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Buyer</th>
+                                                        <th>Service Category</th>
+                                                        <th>Due Date</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for requestinterest in profile.providers.requestinterest_set.all %}
+                                                    {% if requestinterest.status == 'Granted' %}
+                                                    <tr>
+                                                        <td>{{ forloop.counter }}</td>
+                                                        <td>{{ requestinterest.request.requester.user.username }}</td>
+                                                        <td>{{ requestinterest.request.type_of_service }}</td>
+                                                        <td>{{ requestinterest.due_date }}</td>
+                                                        <td>{{ requestinterest.status }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab6">
+                                        <h2>Completed</h2>
+                                        <p>Lorem ipsum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab7">
+                                        <h2>Cancelled</h2>
+                                        <p>Lorem ipsum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab8">
+                                        <h2>Starred</h2>
+                                        <p>Lorem ipsum.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                     </div>
+                        <!-- Ads Archive End -->
+                      <div class="clearfix"></div>
+                        <!-- Pagination -->
+                        <!-- Pagination End -->
+                     </div>
+                     <!-- Row End -->
+                  </div>
+                  <!-- Middle Content Area  End -->
+               </div>
+               <!-- Row End -->
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+      </div>
+<script>
+  function payWithPaystack(){
+ 	var amount = document.getElementById('amount').value;
+    var handler = PaystackPop.setup({
+      key: 'pk_test_90e512b1735b6d9527bbce412e5b22dae298afee',
+      email: customer_email,
+      amount: amount * 100,
+      ref: ''+Math.floor((Math.random() * 10000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: phone_number,
+                variable_name: phone_number,
+                value: phone_number
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+          $.ajax({
+            type: 'POST',
+            url: "/payments/fund-account/",
+            data: {'csrfmiddlewaretoken':$('input[name="csrfmiddlewaretoken"]').val(), 'ref':response.reference, 'amount':amount},
+            success: function(feedback){
+                window.location.href = "/payments/absre4g64{{ user.profile.pk }}4t5f/funding/";
+             },
+            error: function(xhr, status, error){
+                 console.log('xhr: ' + xhr);
+                 console.log('status: ' + status);
+                  console.log("Error log: " + error['error']);
+                    },
+                });
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+</script>
+{% endblock %}
