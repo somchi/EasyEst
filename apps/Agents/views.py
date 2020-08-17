@@ -13,7 +13,7 @@ import datetime
 from django.db.models import Q
 from django.views import generic
 from django.contrib import messages
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 def propertyupload(request, user_id):
     created_by = get_object_or_404(Profile, pk=user_id)

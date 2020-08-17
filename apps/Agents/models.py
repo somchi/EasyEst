@@ -1,7 +1,7 @@
 from django.db import models
 from common.models import Profile
 import datetime
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from state.models import State, LGA
 from django.utils import timezone
 from django.conf import settings
@@ -53,9 +53,9 @@ class PropertyUpload(models.Model):
         ('Approved', 'Approved'),
     )
 
-    created_by = models.ForeignKey(Profile)
-    property_type = models.ForeignKey(Category, null=True)
-    availability_type = models.ForeignKey(Available, null=True)
+    created_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    property_type = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
+    availability_type = models.ForeignKey(Available, null=True, on_delete=models.CASCADE)
     main_view = models.ImageField(upload_to='Agents')
     right_view = models.ImageField(upload_to='Agents', blank=True)
     back_view = models.ImageField(upload_to='Agents', blank=True)
@@ -65,8 +65,8 @@ class PropertyUpload(models.Model):
     number_of_room = models.CharField(max_length=10, blank=True)
     number_of_toilet = models.CharField(max_length=10, blank=True)
     number_of_baths = models.CharField(max_length=10, blank=True)
-    property_state = models.ForeignKey(State)
-    property_lga = models.ForeignKey(LGA)
+    property_state = models.ForeignKey(State, on_delete=models.CASCADE)
+    property_lga = models.ForeignKey(LGA, on_delete=models.CASCADE)
     water = models.CharField(max_length=100, blank=True)
     power = models.CharField(max_length=100, blank=True)
     date_created = models.DateField(editable=False, auto_now_add=True)

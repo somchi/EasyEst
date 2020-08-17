@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django_comments',
     'mptt',
     'tagging',
-    'zinnia',
+    # 'zinnia',
     'registration',
     'Agents',
     'Blog',
@@ -99,7 +99,7 @@ TEMPLATES = [
                 'Payments.processor.featured',
                 'Payments.processor.active_users',
                 'Payments.processor.featured_jobs',
-                'zinnia.context_processors.version',
+                # 'zinnia.context_processors.version',
             ],
         },
     },
@@ -126,9 +126,9 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'EasyEstate',
-        'USER': 'EasyEstate',
-        'PASSWORD': 'easyestate',
+        'NAME': 'easyEstate',
+        'USER': 'easyEstate',
+        'PASSWORD': 'juliet11',
         'HOST': '',
         'PORT': '',
     }

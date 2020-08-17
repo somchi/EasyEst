@@ -6,7 +6,7 @@ from common.models import Profile
 from django.db.models import Q
 from django.core.mail import send_mail
 import datetime
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from .forms import ProviderForm, RequestServiceForm, RequestInterestsForm, RequestServicesEditForm, ProfileBuildForm
 from .models import Providers, RequestServices, RequestInterest, ServiceType
 from django.contrib import messages

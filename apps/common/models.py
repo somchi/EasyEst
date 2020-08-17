@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from state.models import Country, State, LGA
 from .validator import validate_phone
+from django.urls import reverse
 
 SEX_CHOICES = (
     ('M', 'Male'),
@@ -23,9 +24,9 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=11, validators=[validate_phone])
     full_name = models.CharField(max_length=200, default="", blank=False)
     address = models.TextField()
-    country = models.ForeignKey(Country)
-    state = models.ForeignKey(State)
-    lga = models.ForeignKey(LGA)
+    country = models.ForeignKey(Country, models.CASCADE)
+    state = models.ForeignKey(State, models.CASCADE)
+    lga = models.ForeignKey(LGA, models.CASCADE)
     i_agree = models.BooleanField(default=False)
 
 
@@ -37,6 +38,6 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    @models.permalink
+    # @models.permalink
     def get_absolute_url(self):
-        return ('common:profile', (), {'pk':self.pk})
+        return reverse('common:profile', (), args=(self.pk, ))

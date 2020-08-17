@@ -3,7 +3,7 @@ from .models import Profile
 import datetime
 from django.contrib.auth.models import User, Permission
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
-from registration.forms import RegistrationFormUniqueEmail
+from django_registration.forms import RegistrationFormUniqueEmail
 from django.forms.widgets import PasswordInput, TextInput, EmailInput
 from django.contrib.auth.hashers import make_password
 
@@ -27,6 +27,7 @@ class ProfileForm(forms.ModelForm):
             'state': forms.Select(attrs={'class': 'form-control'}),
             'lga': forms.Select(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
+            'full_name': forms.TextInput(attrs={'class': 'form-control'}),
             'phone_number': forms.NumberInput(attrs={'class': 'form-control'}),
             'photo': forms.FileInput(attrs={'class': 'form-control'}),
             'address': forms.Textarea(attrs={'class': 'form-control'}),

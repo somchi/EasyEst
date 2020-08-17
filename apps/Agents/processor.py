@@ -20,14 +20,14 @@ def PromotedProperties(request):
     date = datetime.datetime.now()
     page = request.GET.get('page', 1)
     visibility = PromotionCategories.objects.filter(class_of_transaction='Featured')
-    property = PromoteProperty.objects.filter(Q(visibility_point=visibility) & Q(expires__gte=date))
+    property = PromoteProperty.objects.filter(Q(visibility_point__in=visibility) & Q(expires__gte=date))
     paginator = Paginator(property, 5)
     try:
-        properties = paginator.page(page)
+        properties = paginator.get_page(page)
     except PageNotAnInteger:
-        properties = paginator.page(1)
+        properties = paginator.get_page(1)
     except EmptyPage:
-        properties = paginator.page(paginator.num_pages)
+        properties = paginator.get_page(paginator.num_pages)
     context = {'properties':properties}
     return context
 

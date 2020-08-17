@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.models import User
 from common.models import Profile
 import datetime
@@ -18,7 +18,7 @@ class ServiceIcon(models.Model):
 
 class ServiceType(models.Model):
     service = models.CharField(max_length=200)
-    icon = models.ForeignKey(ServiceIcon, null=True)
+    icon = models.ForeignKey(ServiceIcon, null=True, on_delete=models.CASCADE)
     service_code = models.CharField(max_length=4, blank=True)
     description = models.TextField()
 
@@ -27,8 +27,8 @@ class ServiceType(models.Model):
 
 # the model for a user to create a service profile
 class Providers(models.Model):
-    provider = models.OneToOneField(Profile)
-    service_provided = models.ForeignKey(ServiceType)
+    provider = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    service_provided = models.ForeignKey(ServiceType, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=200)
     since = models.DateField(help_text='When did you start')
     to = models.DateField(auto_now=True, help_text='till')
@@ -41,15 +41,15 @@ class Providers(models.Model):
     def __str__(self):
         return self.full_name
 
-    @models.permalink
+    # @models.permalink
     def get_absolute_url(self):
-        return ('service:manage_service', {'pk':self.pk})
+        return reverse('service:manage_service', {'pk':self.pk})
 
 # the model a user can use to request a specific service
 
 
 class ProviderBuild(models.Model):
-    provider = models.ForeignKey(Providers)
+    provider = models.ForeignKey(Providers, on_delete=models.CASCADE)
     certificate_name = models.CharField(max_length=50, help_text='Evidence of a training done')
     cert_evidence = models.ImageField(upload_to='photo_evidence', blank=True)
     issuer = models.CharField(max_length=200, help_text='A recent job you just did')
@@ -65,8 +65,8 @@ class RequestServices(models.Model):
         (GRANTED, 'Granted')
     )
 
-    requester = models.ForeignKey(Profile)
-    type_of_service = models.ForeignKey(ServiceType)
+    requester = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    type_of_service = models.ForeignKey(ServiceType, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=STATUS, default=RUNNING, editable=False)
     job_title = models.CharField(max_length=255)
     duration = models.CharField(max_length=20, help_text='How long the job will run', blank=True)
@@ -86,8 +86,8 @@ class RequestServices(models.Model):
 
 # the model a provider uses to bid for a request
 class RequestInterest(models.Model):
-    request = models.ForeignKey(RequestServices)
-    interested_person = models.ForeignKey(Providers)
+    request = models.ForeignKey(RequestServices, on_delete=models.CASCADE)
+    interested_person = models.ForeignKey(Providers, on_delete=models.CASCADE)
     my_offer = models.CharField(max_length=255)
     price_offer = models.DecimalField(max_digits=10, decimal_places=0)
     date_created = models.DateField(auto_now_add=True)

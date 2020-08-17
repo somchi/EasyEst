@@ -15,14 +15,17 @@ from django.db.models import Q
 
 def profile(request, user_id):
     user = get_object_or_404(User, pk=user_id)
+    print('-------', request.method)
     if request.method =='POST':
         form = ProfileForm(request.POST, request.FILES)
+        print('=====2', form.is_valid)
         if form.is_valid():
             form.save(user)
             messages.success(request, 'Profile successfully created')
             return redirect('accounts:auth_login')
     else:
         form = ProfileForm()
+        print('=========', request.method, user)
     return render(request, 'common/create_profile.html', {'form':form})
 
 class ProfileSetUp(generic.DetailView):

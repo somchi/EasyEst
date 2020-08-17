@@ -4,8 +4,8 @@ from common.models import Profile
 from Agents.models import PropertyUpload
 
 class MessageProvider(models.Model):
-    receiver = models.ForeignKey(Providers)
-    sender = models.ForeignKey(Profile)
+    receiver = models.ForeignKey(Providers, on_delete=models.CASCADE)
+    sender = models.ForeignKey(Profile, on_delete=models.CASCADE)
     sender_name = models.CharField(max_length=200)
     message_subject = models.CharField(max_length=255)
     message = models.TextField()
@@ -17,13 +17,13 @@ class MessageProvider(models.Model):
         return self.sender.user.username
 
 class Chart(models.Model):
-    user = models.ForeignKey(Profile)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     message = models.TextField()
     date_create = models.DateTimeField(auto_now_add=True)
 
 class EmailSeller(models.Model):
-    property = models.ForeignKey(PropertyUpload)
-    receiver = models.ForeignKey(Profile)
+    property = models.ForeignKey(PropertyUpload, on_delete=models.CASCADE)
+    receiver = models.ForeignKey(Profile, on_delete=models.CASCADE)
     your_name = models.CharField(max_length=255)
     email_address = models.EmailField()
     contact_no = models.CharField(max_length=11)

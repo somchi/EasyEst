@@ -71,8 +71,8 @@ class LoginRequiredMiddleware(object):
         self.exempt_urls = exempt_urls
 
         response = self.get_response(request)
-
-        if not request.user.is_authenticated():
+        print('====', request.user.is_authenticated)
+        if not request.user.is_authenticated:
             path = request.path_info.lstrip('/')
             if not any (m.match(path) for m in self.exempt_urls):
                 return HttpResponseRedirect(settings.LOGIN_URL)

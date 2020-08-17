@@ -16,7 +16,7 @@ class Country(models.Model):
 
 
 class LGA(models.Model):
-    state = models.ForeignKey(State)
+    state = models.ForeignKey(State, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
 
     def __str__(self):

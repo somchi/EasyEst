@@ -13,7 +13,7 @@ from django.conf import settings
 
 #This model is used to fund account
 class FundAccount(models.Model):
-    payee = models.ForeignKey(Profile)
+    payee = models.ForeignKey(Profile, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=50, decimal_places=0, default=0)
     old_balance = models.DecimalField(max_digits=50, decimal_places=0, default=0)
     new_balance = models.DecimalField(max_digits=50, decimal_places=0, default=0)
@@ -33,8 +33,8 @@ class FundAccount(models.Model):
 
 #This model handles all the debit transactions made on fund
 class DebitsTrasactions(models.Model):
-    profile = models.ForeignKey(Profile)
-    available_fund = models.ForeignKey(FundAccount)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    available_fund = models.ForeignKey(FundAccount, on_delete=models.CASCADE)
     reference = models.CharField(max_length=64, unique=True, null=True)
     transaction_cost = models.DecimalField(max_digits=50, decimal_places=0, default=0)
     balance = models.DecimalField(max_digits=50, decimal_places=0, default=0)
@@ -53,9 +53,9 @@ class PromotionCategories(models.Model):
 
 #This model handles all property promotions
 class PromoteProperty(models.Model):
-    property = models.ForeignKey(PropertyUpload)
-    promoter = models.ForeignKey(Profile)
-    visibility_point = models.ForeignKey(PromotionCategories)
+    property = models.ForeignKey(PropertyUpload, on_delete=models.CASCADE)
+    promoter = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    visibility_point = models.ForeignKey(PromotionCategories, on_delete=models.CASCADE)
     transaction_ref = models.CharField(max_length=64, unique=True)
     date_created = models.DateField(auto_now_add=True)
     expires = models.DateTimeField()
@@ -76,7 +76,7 @@ class PromoteProperty(models.Model):
 
 #This model handle all the earnings of a providers
 class ProviderIncome(models.Model):
-    payee = models.ForeignKey(Profile)
+    payee = models.ForeignKey(Profile, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=50, decimal_places=0, default=0)
     old_balance = models.DecimalField(max_digits=50, decimal_places=0, default=0)
     new_balance = models.DecimalField(max_digits=50, decimal_places=0, default=0)
@@ -96,8 +96,8 @@ class ProviderIncome(models.Model):
 
 #This model allow a person pay for a custom offer he/she created to the person his/she granted's it to.
 class PayForCustomRequest(models.Model):
-    payer = models.ForeignKey(Profile)
-    request_interest = models.ForeignKey(RequestInterest)
+    payer = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    request_interest = models.ForeignKey(RequestInterest, on_delete=models.CASCADE)
     transaction_cost = models.DecimalField(max_digits=50, decimal_places=0, default=0)
     order_id = models.CharField(max_length=64, unique=True)
     payment_date = models.DateTimeField(auto_now_add=True)
